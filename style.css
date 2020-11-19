@@ -1,0 +1,67 @@
+.header {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 40px;
+  color: #7dc4f5;
+  background-color: rgb(240, 240, 240);
+  margin-top: -3px;
+}
+
+.branch {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+body {
+  background-color: #d5eeff;
+}
+
+.desc {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+}
+
+#navigate {
+  height: 40px;
+  padding-top: 1cm;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.up {
+  margin-top: -10px;
+  margin-left: -40px;
+}
+
+#left {
+  margin-top: -55px;
+  margin-left: 20px;
+}
+
+#right {
+  margin-top: -60px;
+  margin-right: 50px;
+  color: white;
+}
+
+.atas {
+  margin-top: -5px;
+  text-decoration: none;
+}
+
+.atas:hover,
+.atas:focus,
+.atas:active {
+  text-decoration: none;
+  color: rgb(238, 238, 238);
+}
+
+.intro {
+  margin-top: 65px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: -40px;
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
