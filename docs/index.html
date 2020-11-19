@@ -9,27 +9,33 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="style.css">
         </head>
-    <body>
+    <body class="body">
         <nav class="navbar navbar-dark bg-dark fixed-top" id="navigate">
             <ul class="nav" id="left">
               <a class="nav-link up" href="index.html"><img class="face" width="50%" src="src/Logo.png"></a>
             </ul>
             <ul class="nav justify-content-end" id="right">
                 <li class="nav-item">
-                  <a class="nav-link atas" href="#">Masuk</a>
+                  <a class="nav-link atas page-scroll" href="#anggota" >Anggota</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link atas" href="#">Daftar</a>
+                  <a class="nav-link atas page-scroll" href="#introduce">Introduce</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link atas" href="#">Kontak</a>
+                  <a class="nav-link atas page-scroll" href="#tujuan">Tujuan</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link atas" href="#">Tentang Kami</a>
+                  <a class="nav-link atas page-scroll" href="#fitur">Fitur</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link atas page-scroll" href="#usecase">Usecase</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link atas page-scroll" href="#mockup">Mockup</a>
                 </li>
               </ul>
         </nav><div class="intro">
-           <h2 class="branch">Anggota Kelompok</h2>
+           <h2 class="branch" id="anggota">Anggota Kelompok</h2>
            <p class="desc">Team E <i>Human Computer Interaction</i> terdiri dari:</p>
             <ul>
                 <li class="desc">Faris Rizky Ramadhan - 1313619022 (<a href="https://github.com/chasstiefol" target="_blank" class="text-primary">chasstiefol</a>)</li>
@@ -38,15 +44,15 @@
             </ul>
         </div>
         <div class="intro">
-            <h2 class="branch">Introduce</h2>
+            <h2 class="branch" id="introduce">Introduce</h2>
             <p class="text-justify desc">Website InfoTech merupakan website yang berisi konten tanya jawab seputar dunia ilmu teknologi atau yang biasa disebut IT. Website ini terinspirasi dari Stackoverflow, Brainly, atau sejenisnya. Di website ini kita dapat bertanya dan menjawab konten dari orang lain berupa permasalahannya mengenai device yang mereka miliki. Seperti contohnya apabila mereka memiliki masalah <i>bluescreen</i>  pada laptopnya ataupun <i>bootloop</i> pada smartphone, mereka dapat bertanya di kolom ajukan pertanyaan kemudian bagi pengguna yang pernah mengalami hal seperti itu, dapat membantu menyelesaikannya. Dengan website tanya jawab berbahasa Indonesia ini, bagi mereka yang kurang memahami Bahasa Inggris dapat mudah memahami Langkah-langkah dengan baik.</p>
         </div>
         <div class="intro">
-            <h2 class="branch">Tujuan</h2>
+            <h2 class="branch" id="tujuan">Tujuan</h2>
             <p class="text-justify desc">Website ini bertujuan untuk menyelesaikan masalah pengguna website sebagai pemilik <i>smart device</i> dimana pasti akan menemukan masalah di dalam penggunaannya. Tidak hanya itu, website ini pun dapat menjadi sarana sharing dan berbagi pengalaman sesama pengguna dalam menggunakan <i>smart device</i>.</p>
         </div>
     <div class="intro">
-        <h2 class="branch">Fitur</h2>
+        <h2 class="branch" id="fitur">Fitur</h2>
         <p class="desc">Website ini memiliki beberapa fitur diantaranya:</p>
          <ul>
              <li class="desc">Ajukan Pertanyaan(Untuk menanyakan suatu masalah tentang IT)</li>
@@ -57,11 +63,11 @@
          </ul>
      </div>
     <div class="intro">
-      <h2 class="branch">Use Case Diagram</h2>
+      <h2 class="branch" id="usecase">Use Case Diagram</h2>
       <img src="src/Use_Case_Diagram.png" class="img-fluid d-block use-case" alt="Use Case Diagram">
     </div>
     <div class="intro mb-5">
-      <h2 class="branch">Mockup Design</h2>
+      <h2 class="branch" id="mockup">Mockup Design</h2>
       <dl class="ml-5">
         <dt><h4 class="font-weight-bold">Home</h4></dt>
         <dd><img src="src/Mockup/Home.jpg" class="img-fluid d-block mockup border" alt="Home"></dd>
@@ -88,8 +94,9 @@
         <h5 class="ml=5 text-white">&copy; Team E HCI</h5>
       </div>
     </div>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    </body>
+        <script src="script.js"></script>
+      </body>
 </html>
