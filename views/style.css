@@ -6,9 +6,12 @@
   margin-top: -3px;
 }
 
+.intro {
+  background-color: #eee;
+}
+
 .branch {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
   font-weight: bold;
 }
 
@@ -64,4 +67,16 @@ body {
   border-radius: 10px;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.use-case {
+  max-width: 75%;
+}
+
+.mockup {
+  max-width: 60%;
+}
+
+.footer {
+  background-color: #212529;
 }
