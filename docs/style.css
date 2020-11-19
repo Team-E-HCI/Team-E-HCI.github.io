@@ -78,9 +78,13 @@ body {
 }
 
 .mockup {
-  max-width: 60%;
+  max-width: 80%;
 }
 
 .footer {
   background-color: #212529;
+}
+
+dd {
+  margin-bottom: 3.5rem;
 }
