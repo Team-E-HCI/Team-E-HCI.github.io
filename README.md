@@ -13,3 +13,6 @@ Project yang akan kami kembangkan adalah sebuah website dengan nama InfoTech. We
 
 ## See Our Requirements Gathering Report
 [Report](report/Report.pdf)
+
+## 2nd Phase Conference Video
+[Konferensi dengan responden](https://www.youtube.com/watch?v=Vst72E1l3Ug)
