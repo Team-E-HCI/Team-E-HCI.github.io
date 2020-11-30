@@ -27,16 +27,6 @@ app.use(express.json());
 //logging
 app.use(morgan("dev"));
 
-//Express Handlebars = buat nampilin hasil render
-app.engine(
-  ".hbs",
-  handlebars({
-    defaultLayout: "main",
-    extname: ".hbs",
-  })
-);
-app.set("view engine", ".hbs");
-
 //sessions
 app.use(
   session({
