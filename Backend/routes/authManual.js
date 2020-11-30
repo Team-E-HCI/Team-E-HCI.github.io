@@ -12,9 +12,8 @@ const {
 //Dashboard Page
 //route GET /dashboard
 router.get("/register/akun", (req, res) => {
-  res.render("register", {
-    layout: "login",
-  });
+  //buat nampilin register page
+  res.render("register");
 });
 
 //Register akun manual
@@ -41,14 +40,21 @@ router.post("/", async (req, res) => {
   });
   try {
     const savedUser = await user.save();
-    res.redirect("/login");
+    res.redirect("/api/user/login");
   } catch (err) {
     res.status(400).send(err);
   }
 });
 
+//redirect ke login page
+router.get("/login", (req, res) => {
+  res.render("login", {
+    layout: "login",
+  });
+});
+
 //login manual dengan email
-router.post("/login", async (req, res) => {
+router.post("/login/akun", async (req, res) => {
   //validate the data before creating user
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
