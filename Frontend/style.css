@@ -1,0 +1,183 @@
+#navigate {
+  background-color: #e8f5ff;
+  height: 1.5cm;
+  padding-top: 1cm;
+  font-family: "Roboto";
+}
+
+.up {
+  margin-top: -10px;
+  margin-left: -40px;
+}
+
+#left {
+  margin-top: -50px;
+  margin-left: 20px;
+}
+
+#right {
+  margin-top: -60px;
+  margin-right: 50px;
+  color: white;
+}
+
+.atas {
+  margin-top: -5px;
+  color: #7dc4f5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.atas:hover,
+.atas:focus,
+.atas:active {
+  text-decoration: none;
+  color: #69a2ca;
+}
+
+.head {
+  margin-top: 5cm;
+}
+
+.header {
+  font-size: 40px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #7dc4f5;
+}
+
+.desc {
+  margin-top: 30px;
+  font-family: "Roboto";
+  font-size: 20px;
+}
+
+.ref {
+  background-color: #7dc4f5;
+  color: white;
+  border: 1px;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.ref:hover,
+.ref:focus,
+.ref:active {
+  background-color: #73b1dd;
+}
+
+.foto {
+  margin-left: -1cm;
+  margin-top: 2.5cm;
+}
+
+.ft {
+  margin-left: 3cm;
+  margin-top: 3cm;
+}
+
+.gml {
+  font-family: "Roboto";
+  font-size: 20px;
+  margin-top: -25px;
+  margin-left: 35px;
+}
+
+.ktk {
+  margin-left: 5cm;
+  margin-top: 3cm;
+}
+
+.daftar {
+  background-color: #77d2ff;
+}
+
+.hd {
+  padding-top: 5.5cm;
+}
+
+.hdr {
+  font-size: 40px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #ffffff;
+  padding-left: 20px;
+}
+
+.dsc {
+  color: #ffffff;
+  margin-top: 30px;
+  padding-left: 25px;
+  padding-right: -1cm;
+  font-family: "Roboto";
+  font-size: 18px;
+}
+
+.dftr {
+  background-color: #ffffff;
+  margin-bottom: -4.4cm;
+  margin-left: -2cm;
+}
+
+.akn {
+  margin-top: 4cm;
+  margin-left: 20px;
+}
+
+.akun {
+  font-size: 30px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #98d4ff;
+}
+
+input {
+  width: 7cm;
+}
+
+.sec {
+  padding-left: 3cm;
+  padding-right: 10cm;
+  margin-top: -3.5cm;
+}
+
+.fst {
+  margin-top: 1cm;
+}
+
+.konf {
+  margin-top: 0.5cm;
+}
+
+.ipt {
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.tbl {
+  color: #ffffff;
+  background-color: #7dc4f5;
+  font-family: "Roboto";
+  width: 3cm;
+  height: 1cm;
+  margin-top: 1.5cm;
+  margin-left: 20px;
+  border: none;
+  transition: 0.1s;
+}
+
+.tbl:hover,
+.tbl:focus,
+.tbl:active {
+  background-color: #71aeda;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("Roboto-Regular.ttf");
+}

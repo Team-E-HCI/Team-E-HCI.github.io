@@ -1,0 +1,116 @@
+#navigate {
+  background-color: #77d2ff;
+  height: 1.5cm;
+  padding-top: 1cm;
+  font-family: "Roboto";
+}
+
+.up {
+  margin-top: -10px;
+  margin-left: -40px;
+}
+
+#left {
+  margin-top: -50px;
+  margin-left: 20px;
+}
+
+#right {
+  margin-top: -60px;
+  margin-right: 50px;
+  color: white;
+}
+
+.atas {
+  margin-top: -5px;
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.atas:hover,
+.atas:focus,
+.atas:active {
+  text-decoration: none;
+  color: rgb(182, 182, 182);
+}
+
+.daftar {
+  background-color: #77d2ff;
+}
+
+.full {
+  background-color: #ffffff;
+  padding-top: 3.5cm;
+  padding-left: 2cm;
+}
+
+.hd {
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 32px;
+  color: #81d3fc;
+}
+
+label {
+  margin-top: 20px;
+  font-family: "Roboto";
+}
+
+input {
+  width: 10cm;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.form {
+  margin-top: 1cm;
+}
+
+.ref {
+  margin-top: 1.5cm;
+  background-color: #77d2ff;
+  color: #ffffff;
+  width: 2.5cm;
+  height: 1cm;
+  border: none;
+  font-family: "Roboto";
+  font-weight: bold;
+}
+
+.ref:hover,
+.ref:focus,
+.ref:active {
+  background-color: #64afd4;
+}
+
+.ipt {
+  margin-top: 10px;
+}
+
+.link {
+  font-family: "Roboto";
+  margin-left: 0.5cm;
+  color: #77d2ff;
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+  text-decoration: none;
+  color: #64afd4;
+}
+
+.akhir {
+  padding-bottom: 1.5cm;
+}
+
+.logo {
+  margin-top: -14cm;
+  margin-left: 17cm;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("Roboto-Regular.ttf");
+}

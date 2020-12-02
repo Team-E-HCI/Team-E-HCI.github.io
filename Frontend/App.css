@@ -1,0 +1,358 @@
+#navigate {
+  background-color: #e8f5ff;
+  height: 1.5cm;
+  padding-top: 1cm;
+  font-family: "Roboto";
+}
+
+.up {
+  margin-top: -10px;
+  margin-left: -40px;
+}
+
+.atas {
+  margin-top: -5px;
+  color: #7dc4f5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.atas:hover,
+.atas:focus,
+.atas:active {
+  text-decoration: none;
+  color: #69a2ca;
+}
+
+.head {
+  margin-top: 5cm;
+}
+
+.header {
+  font-size: 40px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #7dc4f5;
+}
+
+.desc {
+  margin-top: 30px;
+  font-family: "Roboto";
+  font-size: 20px;
+}
+
+.ref {
+  background-color: #7dc4f5;
+  color: white;
+  border: 1px;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.ref:hover,
+.ref:focus,
+.ref:active {
+  background-color: #73b1dd;
+}
+
+.foto {
+  margin-left: -1cm;
+  margin-top: 2.5cm;
+}
+
+.ft {
+  margin-left: 3cm;
+  margin-top: 3cm;
+}
+
+.gml {
+  font-family: "Roboto";
+  font-size: 20px;
+  margin-top: -25px;
+  margin-left: 35px;
+}
+
+.ktk {
+  margin-left: 5cm;
+  margin-top: 3cm;
+}
+
+.daftar {
+  background-color: #77d2ff;
+  padding-bottom: 4.7cm;
+}
+
+.hd {
+  padding-top: 5.5cm;
+}
+
+.hdr {
+  font-size: 40px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #ffffff;
+  padding-left: 20px;
+}
+
+.dsc {
+  color: #ffffff;
+  margin-top: 30px;
+  padding-left: 25px;
+  padding-right: -1cm;
+  font-family: "Roboto";
+  font-size: 18px;
+}
+
+.dftr {
+  background-color: #ffffff;
+  margin-bottom: -4.67cm;
+  margin-left: -2cm;
+}
+
+.akn {
+  margin-top: 4cm;
+  margin-left: 20px;
+}
+
+.akun {
+  font-size: 30px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: #98d4ff;
+}
+
+input {
+  width: 7cm;
+}
+
+.sec {
+  margin-top: -4.17cm;
+}
+
+.fst {
+  margin-top: 1cm;
+}
+
+.konf {
+  margin-top: 0.5cm;
+}
+
+.ipts {
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 8cm;
+}
+
+.tbl {
+  color: #ffffff;
+  background-color: #7dc4f5;
+  font-family: "Roboto";
+  width: 3cm;
+  height: 1cm;
+  margin-top: 1.5cm;
+  margin-left: 20px;
+  border: none;
+  transition: 0.1s;
+}
+
+.tbl:hover,
+.tbl:focus,
+.tbl:active {
+  background-color: #71aeda;
+}
+
+#all {
+  background-color: #77d2ff;
+  height: 1.5cm;
+  padding-top: 1cm;
+  font-family: "Roboto";
+}
+
+.body {
+  background-color: #77d2ff;
+  padding-bottom: 1.7cm;
+}
+
+#left {
+  margin-top: -50px;
+  margin-left: 20px;
+}
+
+#right {
+  margin-top: -60px;
+  margin-right: 50px;
+  color: white;
+}
+
+.ataslog {
+  margin-top: -5px;
+  color: rgb(226, 226, 226);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.ataslog:hover,
+.ataslog:focus,
+.ataslog:active {
+  text-decoration: none;
+  color: rgb(182, 182, 182);
+}
+
+.daftar {
+  background-color: #77d2ff;
+}
+
+.full {
+  background-color: #ffffff;
+  padding-top: 3.5cm;
+  padding-left: 2cm;
+}
+
+.hdl {
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 32px;
+  color: #81d3fc;
+}
+
+label {
+  margin-top: 20px;
+  font-family: "Roboto";
+}
+
+input {
+  width: 10cm;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.form {
+  margin-top: 1cm;
+}
+
+.refl {
+  background-color: #77d2ff;
+  color: #ffffff;
+  width: 2.5cm;
+  height: 1cm;
+  border: none;
+  font-family: "Roboto";
+  font-weight: bold;
+}
+
+.refl:hover,
+.refl:focus,
+.refl:active {
+  background-color: #64afd4;
+}
+
+.ipt {
+  margin-top: 10px;
+}
+
+.link {
+  font-family: "Roboto";
+  margin-left: 0.5cm;
+  color: #77d2ff;
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+  text-decoration: none;
+  color: #64afd4;
+}
+
+.akhir {
+  margin-top: 1.5cm;
+  padding-bottom: 1.5cm;
+}
+
+.logo {
+  margin-top: -14cm;
+  margin-left: 17cm;
+}
+
+.wrap {
+  margin-left: 2cm;
+}
+
+#nav-ask {
+  background-color: rgb(248, 248, 248);
+  height: 1.5cm;
+  padding-top: 1cm;
+  font-family: "Roboto";
+}
+
+.full-ask {
+  padding-top: 3cm;
+  padding-left: 2cm;
+}
+
+.hd-ask {
+  font-family: "Roboto";
+  font-weight: bolder;
+  font-size: 32px;
+  color: #74c0e6;
+}
+
+label {
+  margin-top: 20px;
+  font-family: "Roboto";
+}
+
+.ipt-ask {
+  margin-top: 10px;
+  width: 13cm;
+}
+
+.ipt-ask-cntn {
+  margin-top: 10px;
+  height: 10cm;
+}
+
+.ipt-file-ask {
+  margin-top: -10px;
+  width: 14.8cm;
+}
+
+.form-ask {
+  margin-top: 0.5cm;
+  font-weight: bold;
+}
+
+.ref-ask {
+  background-color: #77d2ff;
+  color: #ffffff;
+  width: 4cm;
+  height: 1cm;
+  border: none;
+  font-family: "Roboto";
+  font-weight: bold;
+}
+
+.ref-ask:hover,
+.ref-ask:focus,
+.ref-ask:active {
+  background-color: #64afd4;
+}
+
+.akhir-ask {
+  margin-top: 0.5cm;
+  padding-bottom: 0.5cm;
+}
+
+.foto-ask {
+  margin-top: -13cm;
+  margin-left: 18cm;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("Roboto-Regular.ttf");
+}
