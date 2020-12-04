@@ -356,3 +356,42 @@ label {
   font-family: "Roboto";
   src: url("Roboto-Regular.ttf");
 }
+
+.text-blue {
+  color: #7dc4f5;
+}
+
+.home-title {
+  font-size: 3rem;
+}
+
+.bg-blue {
+  background-color: #7dc4f5;
+}
+
+.home-tagline {
+  font-size: 1.2rem;
+}
+
+.home-button {
+  background-color: #7dc4f5 !important;
+  border-radius: 1rem !important;
+}
+
+.home-button:hover {
+  background-color: #0056b3 !important;
+}
+
+.toggle-button {
+  border: 2px solid #7dc4f5 !important;
+  color: #7dc4f5;
+}
+
+.toggle-button:hover {
+  background-color: #7dc4f5;
+  color: #fff;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
