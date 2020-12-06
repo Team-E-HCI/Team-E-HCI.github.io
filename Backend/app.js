@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
+const handlebars = require("express-handlebars");
 const connectDB = require("./config/connectDB");
 const path = require("path");
 const passport = require("passport");
@@ -26,6 +27,16 @@ app.use(express.json());
 //logging
 app.use(morgan("dev"));
 
+//Express Handlebars = buat nampilin hasil render
+app.engine(
+  ".hbs",
+  handlebars({
+    defaultLayout: "main",
+    extname: ".hbs",
+  })
+);
+app.set("view engine", ".hbs");
+
 //sessions
 app.use(
   session({
@@ -47,7 +58,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
 app.use("/api/user", require("./routes/authManual"));
-
+app.use("/api/konten", require("./routes/konten"));
 //PORT
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server running on port ${PORT} `));
