@@ -1,22 +1,30 @@
-const Joi = require("@hapi/joi");
+const Akun = require("../models/User");
+const jwt = require("jsonwebtoken");
+const asyncHandler = require("express-async-handler");
 
-//register validation
-const registerValidation = (data) => {
-  const schema = Joi.object({
-    name: Joi.string().min(6).required(),
-    email: Joi.string().min(6).required().email(),
-    password: Joi.string().min(6).required(),
-  });
-  return schema.validate(data);
-};
+const pelindung = asyncHandler(async (req, res, next) => {
+  let token;
 
-//login validation
-const loginValidation = (data) => {
-  const schema = Joi.object({
-    email: Joi.string().min(6).required().email(),
-    password: Joi.string().min(6).required(),
-  });
-  return schema.validate(data);
-};
-module.exports.registerValidation = registerValidation;
-module.exports.loginValidation = loginValidation;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      token = req.headers.authorization.split(" ")[1];
+
+      const retas = jwt.verify(token, process.env.TOKEN_SECRET);
+
+      req.user = await Akun.findById(retas.id).select("-password");
+      next();
+    } catch (error) {
+      console.error(error);
+      res.status(401).send("Token failed ");
+    }
+  }
+
+  if (!token) {
+    res.status(401).send("Not Authorized, Token unverified");
+  }
+});
+
+module.exports = { pelindung };
