@@ -1,0 +1,140 @@
+.text-blue {
+  color: #7dc4f5;
+}
+
+.login {
+  background-color: #7dc4f5;
+}
+
+.content-login {
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.color-login {
+  color: #7dc4f5;
+  font-weight: bold;
+}
+
+.login-text {
+  font-size: 18px;
+  color: black;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.home-title {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.login-white {
+  color: white;
+  background-color: #85ccff;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.login-white:hover {
+  background-color: #71aeda;
+}
+
+.login-blue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #85ccff;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.login-blue:hover {
+  background-color: #71aeda;
+}
+
+.forgot-login {
+  font-size: 15px;
+  color: #85ccff;
+  text-decoration: none;
+}
+
+.forgot-login:hover,
+.forgot-login:link,
+.forgot-login:active {
+  color: #73b0db;
+  text-decoration: none;
+}
+
+.home-content {
+  margin-top: 2cm;
+  margin-left: 2cm;
+}
+
+.bg-blue {
+  background-color: #7dc4f5;
+}
+
+.home-tagline {
+  font-size: 1.2rem;
+}
+
+.home-button {
+  background-color: #7dc4f5 !important;
+  border-radius: 1rem !important;
+}
+
+.home-button:hover {
+  background-color: #0056b3 !important;
+}
+
+.toggle-button {
+  border: 2px solid #7dc4f5 !important;
+  color: #7dc4f5;
+}
+
+.toggle-button:hover {
+  background-color: #7dc4f5;
+  color: #fff;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.img-content {
+  margin-top: 0.5cm;
+  margin-left: 1cm;
+}
+
+.tentang-padding {
+  margin-top: 2cm;
+}
+
+.background {
+  color: #7dc4f5;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("Roboto-Regular.ttf");
+}
+
+.signup-text {
+  border-radius: 20px;
+  background-color: #8ccfff;
+}
+
+.text {
+  color: #ffffff;
+}
+
+.signup {
+  margin-top: 8rem;
+}
+
+.daftar-text {
+  color: #8ccfff;
+  font-weight: bold;
+}
