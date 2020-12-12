@@ -4,7 +4,6 @@ const {
   hapusKonten,
   tambahKomentar,
   hapusKomentar,
-  tampilkanKategori,
 } = require('../controllers/controllerKonten')
 const multer = require('multer')
 const express = require('express')
@@ -34,6 +33,4 @@ router.post('/create', pelindung, upload.array('gambar', 5), tambahPostingan)
 router.route('/:id').get(tampilkanSatuKonten).delete(hapusKonten)
 router.route('/:id/komentar').post(pelindung, tambahKomentar)
 router.route('/:id/komentar/:komentar_id').delete(pelindung, hapusKomentar)
-// router.route("/kategori/coding").get(tampilkanKategori);
-
 module.exports = router

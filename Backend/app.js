@@ -37,6 +37,16 @@ app.engine(
 )
 app.set('view engine', '.hbs')
 
+//Express Handlebars = buat nampilin hasil render
+app.engine(
+  '.hbs',
+  handlebars({
+    defaultLayout: 'main',
+    extname: '.hbs',
+  })
+)
+app.set('view engine', '.hbs')
+
 //sessions
 app.use(
   session({

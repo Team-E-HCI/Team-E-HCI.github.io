@@ -42,6 +42,7 @@ const Login = ({ history }) => {
                 type='email'
                 aria-label="Recipient's username"
                 aria-describedby='basic-addon2'
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -58,6 +59,7 @@ const Login = ({ history }) => {
                 type='password'
                 aria-label="Recipient's username"
                 aria-describedby='basic-addon2'
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
