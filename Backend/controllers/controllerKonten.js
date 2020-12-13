@@ -247,6 +247,8 @@ const hapusKomentar = asyncHandler(async (req, res) => {
 
 module.exports = {
   tambahPostingan,
+  updateKonten,
+  tampilkanSeluruhKonten,
   tampilkanSatuKonten,
   hapusKonten,
   tambahKomentar,
