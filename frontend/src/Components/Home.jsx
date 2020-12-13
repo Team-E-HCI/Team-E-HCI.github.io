@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Button } from 'react-bootstrap'
-import Nav from './Nav'
+import { LinkContainer } from 'react-router-bootstrap'
 import ilustration from '../Assets/Home.png'
 import '../App.css'
 
 const Home = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  const redirect = userInfo ? '/ajukan-pertanyaan' : '/masuk'
 
   const clickHandler = () => {
     if (!userInfo) {
@@ -19,7 +21,6 @@ const Home = ({ history }) => {
 
   return (
     <div className='container-fluid p-0'>
-      <Nav text='text-blue' />
       <div className='row'>
         <div className='col-md-5 pl-5 mt-5'>
           <div className='container home-content'>
@@ -29,19 +30,22 @@ const Home = ({ history }) => {
             <p className='m-2 home-tagline'>
               Tanyakan apa pun. Malu tersesat, bertanya di forum.
             </p>
-            <Button
-              size='md'
-              className='text-white font-weight-bold home-button m-2'
-            >
-              Linimasa
-            </Button>
-            <Button
-              size='md'
-              className='text-white font-weight-bold home-button m-2'
-              onClick={clickHandler}
-            >
-              Ajukan Pertanyaan
-            </Button>
+            <LinkContainer to='/linimasa'>
+              <Button
+                size='md'
+                className='text-white font-weight-bold home-button m-2 border-0'
+              >
+                Linimasa
+              </Button>
+            </LinkContainer>
+            <LinkContainer to={redirect}>
+              <Button
+                size='md'
+                className='text-white font-weight-bold home-button m-2 border-0'
+              >
+                Ajukan Pertanyaan
+              </Button>
+            </LinkContainer>
           </div>
         </div>
         <div className='col-md-7 p-5 mt-1'>

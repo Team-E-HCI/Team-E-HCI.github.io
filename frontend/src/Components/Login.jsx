@@ -1,5 +1,5 @@
 import '../App.css'
-import Nav from './Nav'
+import Nav from './Header'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormControl, InputGroup, Button } from 'react-bootstrap'
@@ -29,7 +29,6 @@ const Login = ({ history }) => {
   }
   return (
     <div className='container-fluid p-0'>
-      <Nav text='text-blue' />
       <div className='row login'>
         <div className='row col-sm-11 m-5 content-login'>
           <div className='col-sm-5 offset-1 pt-5'>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { register } from '../actions/userActions'
 import '../App.css'
-import Nav from './Nav'
+import Nav from './Header'
 import { FormControl, InputGroup, Button } from 'react-bootstrap'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { FaKey } from 'react-icons/fa'
@@ -31,7 +31,6 @@ const Login = ({ history }) => {
 
   return (
     <div className='container-fluid p-0'>
-      <Nav text='text-blue' />
       <h1 className='ml-3 mt-3 pl-5 pt-3 daftar-text'>Daftar</h1>
       {error && <h3>{error}</h3>}
       <div className='row ml-5 mr-5'>

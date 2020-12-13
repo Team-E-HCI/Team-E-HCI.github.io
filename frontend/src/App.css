@@ -1,5 +1,9 @@
 .text-blue {
-  color: #7dc4f5;
+  color: #7dc4f5 !important;
+}
+
+.nav-link:hover {
+  color: #0056b3 !important;
 }
 
 .login {
@@ -19,7 +23,7 @@
 .login-text {
   font-size: 18px;
   color: black;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .home-title {
@@ -117,8 +121,8 @@
 }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("Roboto-Regular.ttf");
+  font-family: 'Roboto';
+  src: url('Roboto-Regular.ttf');
 }
 
 .signup-text {
