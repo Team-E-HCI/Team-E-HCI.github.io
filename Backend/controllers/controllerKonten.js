@@ -63,6 +63,38 @@ const tambahPostingan = asyncHandler(async (req, res, next) => {
   }
 });
 
+const updateKonten = asyncHandler(async (req, res) => {
+  const konten = await Konten.findById(req.params.id);
+  if (konten) {
+    (konten.judul = req.body.judul || konten.judul),
+      (konten.postingan = req.body.postingan || konten.postingan),
+      (konten.kategori = req.body.kategori || konten.kategori);
+
+    const update = await konten
+      .save()
+      .then((saved) => {
+        return res.json(saved);
+      })
+      .catch((error) => {
+        return res.json(error);
+      });
+  } else {
+    res.status(404);
+    res.json({ message: "Konten tidak ditemukan" });
+  }
+});
+
+const tampilkanSeluruhKonten = asyncHandler(async (req, res) => {
+  const konten = await Konten.find();
+
+  if (konten) {
+    res.json(konten);
+  } else {
+    res.status(404);
+    throw new Error("Konten tidak ditemukan");
+  }
+});
+
 const tampilkanSatuKonten = asyncHandler(async (req, res) => {
   const konten = await Konten.findById(req.params.id);
 
