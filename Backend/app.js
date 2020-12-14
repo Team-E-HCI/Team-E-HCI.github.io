@@ -69,6 +69,16 @@ app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/api/user', require('./routes/authManual'))
 app.use('/api/konten', require('./routes/konten'))
+
+//Custom Error handler
+app.use((err, req, res, next) => {
+  const statusCode = 200 ? 500 : req.statusCode
+  res.status(statusCode)
+  res.json({
+    message: err.message,
+  })
+})
+
 //PORT
 const PORT = process.env.PORT || 5000
 app.listen(PORT, console.log(`Server running on port ${PORT} `))

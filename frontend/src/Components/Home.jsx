@@ -11,14 +11,6 @@ const Home = ({ history }) => {
 
   const redirect = userInfo ? '/ajukan-pertanyaan' : '/masuk'
 
-  const clickHandler = () => {
-    if (!userInfo) {
-      history.push('/Masuk')
-    } else {
-      history.push('/Ajukan')
-    }
-  }
-
   return (
     <div className='container-fluid p-0'>
       <div className='row'>

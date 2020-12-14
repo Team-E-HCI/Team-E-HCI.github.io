@@ -13,11 +13,11 @@ const App = () => {
     <Router>
       <Header />
       <Switch>
-        <Route path='/' exact component={Home}></Route>
-        <Route path='/masuk' component={Login}></Route>
-        <Route path='/daftar' component={Signup}></Route>
-        <Route path='/tentang' component={Tentang}></Route>
-        <Route path='/kontak-kami' component={KontakKami}></Route>
+        <Route path='/' exact component={Home} />
+        <Route path='/masuk' component={Login} />
+        <Route path='/daftar' component={Signup} />
+        <Route path='/tentang' component={Tentang} />
+        <Route path='/kontak-kami' component={KontakKami} />
         {/* <Route path="/Tentang-Infotech" component={TentangInfotech}></Route>
         <Route path="/Kontak-Infotech" component={KontakInfotech}></Route>
         <Route path="/Linimasa" component={Linimasa}></Route>

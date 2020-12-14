@@ -37,11 +37,14 @@ const Header = () => {
                 className='font-weight-bold'
               >
                 <LinkContainer to='/profil'>
-                  <NavDropdown.Item className='text-blue'>
+                  <NavDropdown.Item className='text-blue font-weight-bold my-2'>
                     Profil
                   </NavDropdown.Item>
                 </LinkContainer>
-                <NavDropdown.Item className='text-blue' onClick={logoutHandler}>
+                <NavDropdown.Item
+                  className='text-blue font-weight-bold my-2'
+                  onClick={logoutHandler}
+                >
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>
@@ -69,6 +72,20 @@ const Header = () => {
                 Kontak Kami
               </Nav.Link>
             </LinkContainer>
+            {userInfo && (
+              <>
+                <LinkContainer to='/'>
+                  <Nav.Link className='text-blue font-weight-bold px-3'>
+                    Kuesioner
+                  </Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/'>
+                  <Nav.Link className='text-blue font-weight-bold px-3'>
+                    FAQ
+                  </Nav.Link>
+                </LinkContainer>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
