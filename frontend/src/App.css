@@ -148,6 +148,7 @@
   font-weight: bold;
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 768px) {
   .mobile-none {
     display: none !important;
@@ -158,3 +159,103 @@
   box-shadow: none !important;
   text-decoration: none !important;
 }
+=======
+.ajukan-content{
+color: #7dc4f5;
+font-size: 25px;
+font-weight: bold;
+}
+
+.text-ajukan{
+  font-size: 15px;
+  color: black;
+  font-weight: bold;
+}
+
+.btn-ajukan{
+  background-color: #0095ff !important;
+  border: none !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.btn-ajukan:hover{
+    background-color: #0069b4 !important;
+}
+
+.dpdn-ajukan{
+   background-color: #4fc7ff !important;
+}
+
+.profile-content{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.profile-header{
+  color: #58ace7;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.img-profile{
+  display: flex;
+  align-items: center;
+  background-color: black;
+}
+
+.edit-profile{
+  color: #7dc4f5;
+}
+
+.edit-profile:hover{
+  color: #4d8fbe;
+}
+
+.input-ajukan{
+  font-weight: bold !important;
+  background-color:#5bbaff !important;
+  padding: 3 3 0 0 !important;
+}
+
+.input-ajukan:hover{
+  background-color:#4a9bd4 !important;
+}
+
+.range-form{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+}
+
+.border-kuisioner{
+  border-radius: 10px;
+  border: 2px solid #7dc4f5;
+}
+
+.head-kuisioner{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: #7dc4f5;
+}
+
+.btn-kuisioner{
+background-color: #7dc4f5 !important;
+font-weight: bold !important;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+}
+
+.btn-kuisioner:hover{
+  background-color: #2ca7ff !important;
+}
+
+.form-edit{
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
+.form-border{
+  border: 2px solid #7dc4f5 !important;
+  padding-left: 5px !important;
+  border-radius: 5px !important;
+}
+>>>>>>> e1100fc (modify some page and add some pages)

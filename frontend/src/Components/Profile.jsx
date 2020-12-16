@@ -15,7 +15,7 @@ const Profile = () => {
           <div className="col-sm-5">
             <div style={{display:"flex"}}>
               <h1 className="profile-header mt-3">Profil</h1>
-              <a className="mt-4 ml-auto edit-profile" href="#"><FaEdit/></a>
+              <a className="mt-4 ml-auto edit-profile" href="/edit-profile"><FaEdit/></a>
             </div>
             <Form.Group as={Row} className="profile-content" controlId="formPlaintextName">
             <Form.Label column className="col-sm-4">
@@ -59,31 +59,26 @@ const Profile = () => {
             <ListGroup className="mt-5 mb-5">
               <div className="question-profile" style={{display: "flex"}}>
                 <ListGroup.Item variant="primary" className="mt-2 w-100 mr-3">AAN AYAM</ListGroup.Item>
-                <a className="mt-3 ml-auto edit-profile mr-2" href="#"><FaEdit/></a>
                 <a className="mt-3 edit-profile" href="#"><RiDeleteBin6Line/></a>
               </div>
               
               <div className="question-profile" style={{display: "flex"}}>
                 <ListGroup.Item variant="primary" className="mt-2 w-100 mr-3">LOPE NIA</ListGroup.Item>
-                <a className="mt-3 ml-auto edit-profile mr-2" href="#"><FaEdit/></a>
                 <a className="mt-3 edit-profile" href="#"><RiDeleteBin6Line/></a>
               </div>
 
               <div className="question-profile" style={{display: "flex"}}>
                 <ListGroup.Item variant="primary" className="mt-2 w-100 mr-3">CELALU CAYANK</ListGroup.Item>
-                <a className="mt-3 ml-auto edit-profile mr-2" href="#"><FaEdit/></a>
                 <a className="mt-3 edit-profile" href="#"><RiDeleteBin6Line/></a>
               </div>
 
               <div className="question-profile" style={{display: "flex"}}>
                 <ListGroup.Item variant="primary" className="mt-2 w-100 mr-3">POLEPEL</ListGroup.Item>
-                <a className="mt-3 ml-auto edit-profile mr-2" href="#"><FaEdit/></a>
                 <a className="mt-3 edit-profile" href="#"><RiDeleteBin6Line/></a>
               </div>
 
               <div className="question-profile" style={{display: "flex"}}>
                 <ListGroup.Item variant="primary" className="mt-2 w-100 mr-3">CAMPE MATI</ListGroup.Item>
-                <a className="mt-3 ml-auto edit-profile mr-2" href="#"><FaEdit/></a>
                 <a className="mt-3 edit-profile" href="#"><RiDeleteBin6Line/></a>
               </div>
             </ListGroup>
