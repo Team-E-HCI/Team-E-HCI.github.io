@@ -1,10 +1,12 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import ilustration from '../Assets/tentang.png'
+import Header from './Header'
 
 const Tentang = () => {
   return (
     <div className='container-fluid p-0'>
+      <Header />
       <Row>
         <Col md className='pl-5 mt-5'>
           <div className='container p-4 mt-4'>

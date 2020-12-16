@@ -6,6 +6,7 @@ import { FormControl, InputGroup, Button } from 'react-bootstrap'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { FaKey } from 'react-icons/fa'
 import images from '../Assets/Login.png'
+import Header from './Header'
 
 const Login = ({ history }) => {
   const [nama, setNama] = useState('')
@@ -30,6 +31,7 @@ const Login = ({ history }) => {
 
   return (
     <div className='container-fluid p-0'>
+      <Header />
       <h1 className='ml-3 mt-3 pl-5 pt-3 daftar-text'>Daftar</h1>
       {error && <h5 className='ml-3 pl-5'>{error}</h5>}
       <div className='row ml-5 mr-5'>

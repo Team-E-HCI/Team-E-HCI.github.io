@@ -1,18 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import ilustration from '../Assets/Home.png'
 import '../App.css'
+import Header from './Header'
 
 const Home = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  const redirect = userInfo ? '/ajukan-pertanyaan' : '/masuk'
+  const questionRedirect = userInfo ? '/ajukan-pertanyaan' : '/masuk'
+
+  const timelineRedirect = userInfo ? '/linimasa' : '/masuk'
 
   return (
     <div className='container-fluid p-0'>
+      <Header />
       <div className='row'>
         <div className='col-md-5 pl-5 mt-5'>
           <div className='container home-content'>
@@ -22,7 +26,7 @@ const Home = ({ history }) => {
             <p className='m-2 home-tagline'>
               Tanyakan apa pun. Malu tersesat, bertanya di forum.
             </p>
-            <LinkContainer to='/linimasa'>
+            <LinkContainer to={timelineRedirect}>
               <Button
                 size='md'
                 className='text-white font-weight-bold home-button m-2 border-0'
@@ -30,7 +34,7 @@ const Home = ({ history }) => {
                 Linimasa
               </Button>
             </LinkContainer>
-            <LinkContainer to={redirect}>
+            <LinkContainer to={questionRedirect}>
               <Button
                 size='md'
                 className='text-white font-weight-bold home-button m-2 border-0'

@@ -1,10 +1,12 @@
 import React from 'react'
 import ilustration from '../Assets/kontak.png'
 import { SiGmail } from 'react-icons/si'
+import Header from './Header'
 
 const KontakKami = () => {
   return (
     <div className='container-fluid p-0'>
+      <Header />
       <div className='row'>
         <div className='col-md pl-5 mt-5'>
           <div className='container pt-5'>
@@ -15,7 +17,7 @@ const KontakKami = () => {
               Anda dapat menghubungi kami melalui:
             </p>
             <p className='m-2 mt-4 home-tagline font-weight-bold'>
-              <SiGmail className='mr-2 text-danger' />
+              <SiGmail className='mr-2 mb-1 text-danger' />
               timehci5@gmail.com
             </p>
           </div>

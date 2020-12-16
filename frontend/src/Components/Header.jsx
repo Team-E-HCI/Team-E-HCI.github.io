@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='light' expand='sm' collapseOnSelect>
+      <Navbar bg='light' expand='md' collapseOnSelect>
         <LinkContainer to='/'>
           <Navbar.Brand>
             <Image src={logo} className='w-75' />
@@ -39,6 +39,11 @@ const Header = () => {
                 <LinkContainer to='/profil'>
                   <NavDropdown.Item className='text-blue font-weight-bold my-2'>
                     Profil
+                  </NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to='/'>
+                  <NavDropdown.Item className='text-blue font-weight-bold my-2'>
+                    Notifikasi
                   </NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Item

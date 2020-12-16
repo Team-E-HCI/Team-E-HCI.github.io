@@ -2,6 +2,11 @@
   color: #7dc4f5 !important;
 }
 
+.link-blue:hover {
+  color: #0056b3 !important;
+  text-decoration: none !important;
+}
+
 .nav-link:hover {
   color: #0056b3 !important;
 }
@@ -141,4 +146,15 @@
 .daftar-text {
   color: #8ccfff;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .mobile-none {
+    display: none !important;
+  }
+}
+
+.toggle-link:focus {
+  box-shadow: none !important;
+  text-decoration: none !important;
 }

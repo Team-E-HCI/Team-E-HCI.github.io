@@ -1,11 +1,12 @@
 import '../App.css'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { FormControl, InputGroup, Button } from 'react-bootstrap'
+import { FormControl, InputGroup } from 'react-bootstrap'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { FaKey } from 'react-icons/fa'
 import images from '../Assets/Login.png'
 import { login } from '../actions/userActions'
+import Header from './Header'
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState('')
@@ -18,7 +19,7 @@ const Login = ({ history }) => {
 
   useEffect(() => {
     if (userInfo) {
-      history.push('/')
+      history.push('/linimasa')
     }
   }, [history, userInfo])
 
@@ -28,6 +29,7 @@ const Login = ({ history }) => {
   }
   return (
     <div className='container-fluid p-0'>
+      <Header />
       <div className='row login'>
         <div className='row col-sm-11 m-5 content-login'>
           <div className='col-sm-5 offset-1 pt-5'>
