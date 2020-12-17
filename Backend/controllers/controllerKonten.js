@@ -235,7 +235,9 @@ const tambahKomentar = asyncHandler(async (req, res) => {
   const nama = pengguna.nama;
   if (konten) {
     const koment = {
-      pengguna: pemilik,
+      pengguna: pengguna,
+      nama: pengguna.nama,
+      avatar: pengguna.avatar
       komen: req.body.komen,
     };
 
