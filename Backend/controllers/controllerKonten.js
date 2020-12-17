@@ -119,7 +119,7 @@ const updateKonten = asyncHandler(async (req, res) => {
 });
 
 const tampilkanSeluruhKonten = asyncHandler(async (req, res) => {
-  const konten = await Konten.find({}).populate('pengguna')
+  const konten = await Konten.find({}).populate('pengguna').sort({tanggalDibuat: "desc"}).lean()
 
   if (konten) {
     res.json(konten);
