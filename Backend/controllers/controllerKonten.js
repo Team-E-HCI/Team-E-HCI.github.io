@@ -85,7 +85,10 @@ const updateKonten = asyncHandler(async (req, res) => {
 })
 
 const tampilkanSeluruhKonten = asyncHandler(async (req, res) => {
-  const konten = await Konten.find({}).populate('pengguna')
+  const konten = await Konten.find({})
+    .populate('pengguna')
+    .sort({ tanggalDibuat: 'desc' })
+    .lean()
 
   if (konten) {
     res.json(konten)
@@ -96,7 +99,10 @@ const tampilkanSeluruhKonten = asyncHandler(async (req, res) => {
 })
 
 const tampilkanSatuKonten = asyncHandler(async (req, res) => {
-  const konten = await Konten.findById(req.params.id)
+  const konten = await Konten.findById(req.params.id).populate(
+    'pengguna',
+    'nama avatar'
+  )
 
   if (konten) {
     res.json(konten)
@@ -187,8 +193,12 @@ const hapusKonten = asyncHandler(async (req, res) => {
 const tambahKomentar = asyncHandler(async (req, res) => {
   const konten = await Konten.findById(req.params.id)
 
+  const pemilik = await Akun.findById(konten.pengguna._id).select('-password')
+
   if (konten) {
     const koment = {
+      nama: req.user.nama,
+      avatar: req.user.avatar,
       pengguna: req.user._id,
       komen: req.body.komen,
     }

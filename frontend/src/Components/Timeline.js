@@ -21,17 +21,17 @@ const Timeline = ({ history }) => {
   const dispatch = useDispatch()
 
   const contentList = useSelector((state) => state.contentList)
+  const { contents } = contentList
 
   useEffect(() => {
     dispatch(listContent())
   }, [])
 
-  const [contents, setContents] = useState(contentList.contents)
-
   const contentCategory = useSelector((state) => state.contentCategory)
 
   const categoryHandler = (category) => {
     dispatch(listContentCategorized(category))
+    history.push('/linimasa')
   }
 
   const [nav, setNav] = useState(

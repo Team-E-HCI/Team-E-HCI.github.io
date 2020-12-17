@@ -5,6 +5,8 @@ import { userLoginReducer, userRegisterReducer } from './reducers/userReducers'
 import {
   contentListReducer,
   contentCategoryReducer,
+  contentDetailReducer,
+  contentCommentReducer,
 } from './reducers/contentReducers'
 
 const reducer = combineReducers({
@@ -12,6 +14,8 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   contentList: contentListReducer,
   contentCategory: contentCategoryReducer,
+  contentDetail: contentDetailReducer,
+  contentComment: contentCommentReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

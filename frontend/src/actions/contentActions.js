@@ -6,6 +6,12 @@ import {
   CONTENT_CATEGORY_FAIL,
   CONTENT_CATEGORY_REQUEST,
   CONTENT_CATEGORY_SUCCESS,
+  CONTENT_DETAIL_REQUEST,
+  CONTENT_DETAIL_SUCCESS,
+  CONTENT_DETAIL_FAIL,
+  CONTENT_COMMENT_REQUEST,
+  CONTENT_COMMENT_SUCCESS,
+  CONTENT_COMMENT_FAIL,
 } from '../constants/contentConstants'
 
 export const listContent = () => async (dispatch, getState) => {
@@ -71,6 +77,77 @@ export const listContentCategorized = (category) => async (
   } catch (error) {
     dispatch({
       type: CONTENT_CATEGORY_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    })
+  }
+}
+
+export const detailContent = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CONTENT_DETAIL_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`/api/konten/${id}`, config)
+
+    dispatch({
+      type: CONTENT_DETAIL_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: CONTENT_DETAIL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    })
+  }
+}
+
+export const addComment = (id, komen) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CONTENT_COMMENT_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(
+      `/api/konten/${id}/komentar`,
+      { komen },
+      config
+    )
+
+    dispatch({
+      type: CONTENT_COMMENT_SUCCESS,
+    })
+  } catch (error) {
+    dispatch({
+      type: CONTENT_COMMENT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

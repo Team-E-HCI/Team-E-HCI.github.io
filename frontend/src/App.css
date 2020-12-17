@@ -158,3 +158,22 @@
   box-shadow: none !important;
   text-decoration: none !important;
 }
+
+.comment-button {
+  background-color: #7dc4f5 !important;
+}
+
+.comment-button:hover {
+  background-color: #0056b3 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .comment-avatar {
+    width: 25% !important;
+    height: auto !important;
+  }
+
+  .comment-name {
+    text-align: center !important;
+  }
+}

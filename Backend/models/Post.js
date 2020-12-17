@@ -1,10 +1,17 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const komentarSchema = mongoose.Schema({
+  nama: {
+    type: String,
+    required: true,
+  },
+  avatar: {
+    type: String,
+  },
   pengguna: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "Akun",
+    ref: 'Akun',
   },
   komen: {
     type: String,
@@ -14,13 +21,13 @@ const komentarSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+})
 
 const postSchema = mongoose.Schema({
   pengguna: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "Akun",
+    ref: 'Akun',
   },
   judul: {
     type: String,
@@ -42,6 +49,6 @@ const postSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+})
 
-module.exports = mongoose.model("Konten", postSchema, "Konten");
+module.exports = mongoose.model('Konten', postSchema, 'Konten')

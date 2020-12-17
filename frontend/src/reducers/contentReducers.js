@@ -2,6 +2,9 @@ import {
   CONTENT_CATEGORY_FAIL,
   CONTENT_CATEGORY_REQUEST,
   CONTENT_CATEGORY_SUCCESS,
+  CONTENT_DETAIL_FAIL,
+  CONTENT_DETAIL_REQUEST,
+  CONTENT_DETAIL_SUCCESS,
   CONTENT_LIST_FAIL,
   CONTENT_LIST_REQUEST,
   CONTENT_LIST_SUCCESS,
@@ -27,6 +30,32 @@ export const contentCategoryReducer = (state = { contents: [] }, action) => {
     case CONTENT_CATEGORY_SUCCESS:
       return { loading: false, contents: action.payload }
     case CONTENT_CATEGORY_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const contentDetailReducer = (state = { content: {} }, action) => {
+  switch (action.type) {
+    case CONTENT_DETAIL_REQUEST:
+      return { loading: true, content: {} }
+    case CONTENT_DETAIL_SUCCESS:
+      return { loading: false, content: action.payload }
+    case CONTENT_DETAIL_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const contentCommentReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CONTENT_DETAIL_REQUEST:
+      return { loading: true }
+    case CONTENT_DETAIL_SUCCESS:
+      return { loading: false, success: true }
+    case CONTENT_DETAIL_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state
