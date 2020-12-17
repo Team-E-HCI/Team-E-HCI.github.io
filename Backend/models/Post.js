@@ -13,13 +13,19 @@ const komentarSchema = mongoose.Schema({
     required: true,
     ref: 'Akun',
   },
+  nama: {
+    type: String,
+  },
+  avatar: {
+    type: String,
+  },
   komen: {
     type: String,
     required: true,
   },
   tanggalKomentar: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: Date,
   },
 })
 
@@ -46,8 +52,8 @@ const postSchema = mongoose.Schema({
     required: true,
   },
   tanggalDibuat: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: Date,
   },
 })
 
