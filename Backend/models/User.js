@@ -1,6 +1,50 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+
+const Bookmark = new mongoose.Schema({
+  pengguna: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "Akun",
+  },
+  judul: {
+    type: String,
+  },
+  postingan: {
+    type: String,
+  },
+  gambar: {
+    type: [],
+  },
+  kategori: {
+    type: String,
+  },
+  tanggalDibuat: {
+    type: String,
+    default: Date,
+  },
+});
+
+const Notifikasi = new mongoose.Schema({
+  pesan: {
+    type: String,
+    required: true,
+    max: 255,
+    min: 6,
+  },
+  url: {
+    type: String,
+  },
+  tanggalDibuat: {
+    type: String,
+    default: Date,
+  },
+});
+
 const Akun = new mongoose.Schema({
+  avatar: {
+    type: String,
+  },
   nama: {
     type: String,
     required: true,
@@ -29,9 +73,11 @@ const Akun = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Konten",
   },
+  bookmarks: [Bookmark],
+  notifications: [Notifikasi],
   tanggalDibuat: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: Date,
   },
 });
 
