@@ -18,14 +18,7 @@ import {
 } from 'react-icons/fa'
 
 const Content = ({ content }) => {
-  const [likeActive, setLikeActive] = useState(false)
-  const [numLike, setNumLike] = useState(666)
   const [bookmarkActive, setBookmarkActive] = useState(false)
-
-  const likeHandler = () => {
-    setLikeActive((prev) => !prev)
-    setNumLike((prev) => (likeActive ? prev - 1 : prev + 1))
-  }
 
   const bookmarkHandler = () => {
     setBookmarkActive((prev) => !prev)
@@ -69,18 +62,6 @@ const Content = ({ content }) => {
               </Col>
             </Row>
             <Row className='pt-4'>
-              <Col>
-                <Button onClick={likeHandler} variant='link'>
-                  <h5>
-                    {likeActive ? (
-                      <FaHeart className='text-danger' />
-                    ) : (
-                      <FaRegHeart className='text-dark' />
-                    )}
-                  </h5>
-                </Button>
-                <span>{numLike}</span>
-              </Col>
               <Col>
                 <Button variant='link' disabled>
                   <h5>

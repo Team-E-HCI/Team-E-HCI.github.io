@@ -154,6 +154,16 @@ const PostDetail = ({ history, match }) => {
                   <p className='text-justify font-weight-bold'>
                     {content.postingan}
                   </p>
+                  {content.gambar &&
+                    content.gambar.map((g) => (
+                      <a href={g} target='_blank'>
+                        <Image
+                          style={{ height: '10rem', margin: '1rem' }}
+                          src={g}
+                          fluid
+                        />
+                      </a>
+                    ))}
                 </Col>
               </Row>
               <Form onSubmit={commentHandler} className='py-2'>

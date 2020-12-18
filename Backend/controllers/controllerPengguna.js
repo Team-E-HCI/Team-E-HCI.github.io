@@ -20,6 +20,8 @@ const authManual = asyncHandler(async (req, res) => {
       _id: akun._id,
       nama: akun.nama,
       email: akun.email,
+      github: akun.github,
+      twitter: akun.twitter,
       avatar: akun.avatar,
       token: generateToken(akun._id),
     })
@@ -154,10 +156,18 @@ const updateProfil = asyncHandler(async (req, res) => {
       (akun.github = req.body.github),
       (akun.twitter = req.body.twitter)
 
-    const update = await akun
+    await akun
       .save()
       .then((saved) => {
-        return res.json(saved)
+        return res.json({
+          _id: saved._id,
+          nama: saved.nama,
+          email: saved.email,
+          github: saved.github,
+          twitter: saved.twitter,
+          avatar: saved.avatar,
+          token: generateToken(saved._id),
+        })
       })
       .catch((error) => {
         return res.json(error)

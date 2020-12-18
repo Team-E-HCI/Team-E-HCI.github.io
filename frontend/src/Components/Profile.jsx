@@ -10,7 +10,6 @@ import Sidebar from './Sidebar'
 import Header from './Header'
 import { getUserDetails } from '../actions/userActions'
 import { listContentCategorized } from '../actions/contentActions'
-import { USER_DETAILS_SUCCESS } from '../constants/userConstants'
 
 const Profile = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -122,7 +121,7 @@ const Profile = ({ history, match }) => {
                     {userInfo._id === match.params.id && (
                       <LinkContainer
                         className='mt-4 ml-auto edit-profile'
-                        to='/edit-profile'
+                        to={`/update-pengguna/${user._id}`}
                       >
                         <FaEdit />
                       </LinkContainer>
