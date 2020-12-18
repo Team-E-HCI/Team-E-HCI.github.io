@@ -13,11 +13,12 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../actions/userActions'
 import logo from '../Assets/Logo.png'
 
-const Sidebar = ({ onCategory }) => {
+const Sidebar = ({ onCategory, onLogout }) => {
   const dispatch = useDispatch()
 
   const logoutHandler = () => {
     dispatch(logout())
+    onLogout()
   }
 
   return (

@@ -37,16 +37,20 @@ const Content = ({ content }) => {
         <Row>
           <Col xs={3} className='text-right my-auto'>
             <Row>
-              <Col md={7} className='py-1 px-0 text-center'>
-                <Image src={content.pengguna.avatar} className='w-50' fluid />
-              </Col>
-              <Col md={5} className='py-1 px-0 text-center'>
-                <Link
-                  to={`/pengguna/${content.pengguna._id}`}
-                  className='text-blue link-blue'
-                >
-                  <p>{content.pengguna.nama}</p>
-                </Link>
+              <Col className='py-1 px-0 text-center'>
+                <Image
+                  src={content.pengguna.avatar}
+                  className='w-25 mb-2'
+                  fluid
+                />
+                <span>
+                  <Link
+                    to={`/pengguna/${content.pengguna._id}`}
+                    className='text-blue link-blue font-weight-bold'
+                  >
+                    <p>{content.pengguna.nama}</p>
+                  </Link>
+                </span>
               </Col>
             </Row>
           </Col>

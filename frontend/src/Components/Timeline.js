@@ -16,7 +16,7 @@ const Timeline = ({ history }) => {
     if (!userInfo) {
       history.push('/')
     }
-  }, [userInfo])
+  }, [history, userInfo])
 
   const dispatch = useDispatch()
 
@@ -34,15 +34,23 @@ const Timeline = ({ history }) => {
     history.push('/linimasa')
   }
 
+  const logoutHandler = () => {
+    history.push('/')
+  }
+
   const [nav, setNav] = useState(
     <Col md={3} lg={2} className='p-0'>
-      <Sidebar onCategory={categoryHandler} />
+      <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
     </Col>
   )
+
   const [account, setAccount] = useState(
     <Row className='px-5'>
       <Col className='font-weight-bold pt-4 pr-5 text-right'>
-        <Link to='/profil' className='text-blue link-blue px-3'>
+        <Link
+          to={`/pengguna/${userInfo._id}`}
+          className='text-blue link-blue px-3'
+        >
           {userInfo && userInfo.nama}
         </Link>
         <Link to='/profil' className='text-blue link-blue px-3'>
@@ -65,7 +73,7 @@ const Timeline = ({ history }) => {
         </Container>
       ) : (
         <Col md={3} lg={2} className='p-0'>
-          <Sidebar onCategory={categoryHandler} />
+          <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
         </Col>
       )
     })
@@ -73,7 +81,10 @@ const Timeline = ({ history }) => {
       mql.matches ? null : (
         <Row className='px-5'>
           <Col className='font-weight-bold pt-4 text-right'>
-            <Link to='/profil' className='text-blue link-blue px-3'>
+            <Link
+              to={`/pengguna/${userInfo._id}`}
+              className='text-blue link-blue px-3'
+            >
               {userInfo && userInfo.nama}
             </Link>
             <Link to='/profil' className='text-blue link-blue px-3'>
@@ -87,42 +98,58 @@ const Timeline = ({ history }) => {
 
   return (
     <Container fluid>
-      <Row>
-        {nav}
-        <Col md={9} lg={10}>
-          {account}
-          <Row className='p-4'>
-            <Col>
-              <h3 className='text-blue'>Linimasa</h3>
-            </Col>
-            <Col className='text-right'>
-              <LinkContainer to='/ajukan-pertanyaan'>
-                <Button
-                  size='md'
-                  className='text-white font-weight-bold home-button m-2 border-0'
-                >
-                  Ajukan Pertanyaan
-                </Button>
-              </LinkContainer>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={9} className='p-0'>
-              {contentCategory.contents.length === 0
-                ? contents.map((content) => <Content content={content} />)
-                : contentCategory.contents.map((content) => (
-                    <Content content={content} />
-                  ))}
-            </Col>
-            <Col md={3} className='p-0 mobile-none'>
-              <Card className='p-3'>
-                <h5 className='text-blue'>AAN Pernah bilang:</h5>
-                <h5 className='pt-4'>H3H3</h5>
-              </Card>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+      {userInfo && (
+        <Row>
+          {nav}
+          <Col md={9} lg={10}>
+            {account}
+            <Row className='p-4'>
+              <Col>
+                <h3 className='text-blue'>Linimasa</h3>
+              </Col>
+              <Col className='text-right'>
+                <LinkContainer to='/ajukan-pertanyaan'>
+                  <Button
+                    size='md'
+                    className='text-white font-weight-bold home-button m-2 border-0'
+                  >
+                    Ajukan Pertanyaan
+                  </Button>
+                </LinkContainer>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={9} className='p-0'>
+                {contentCategory.contents.length === 0
+                  ? contents.map((content) => <Content content={content} />)
+                  : contentCategory.contents.map((content) => (
+                      <Content content={content} />
+                    ))}
+              </Col>
+              <Col md={3} className='p-0 mobile-none'>
+                <Card className='p-3'>
+                  <h5 className='text-blue'>Orang bijak Pernah bilang:</h5>
+                  <p className='pt-4 text-center'>
+                    Walaupun programmer bisa ngetik code, tapi bukan berarti
+                    programmer bisa peka terhadap code dari perempuan
+                  </p>
+                </Card>
+                <Card className='p-3'>
+                  <h5 className='text-blue'>Catatan Pengembang Web</h5>
+                  <p className='pt-4'>
+                    1. Bila ada error pada situs kami, silahkan hubungi kami
+                    melalui email kami di "Kontak Kami"
+                  </p>
+                  <p className='pt-4'>
+                    2. Mohon bantuannya untuk mengisi kuesioner pada menu
+                    "Kuesioner". Akan ada hadiah bagi satu orang beruntung
+                  </p>
+                </Card>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      )}
     </Container>
   )
 }

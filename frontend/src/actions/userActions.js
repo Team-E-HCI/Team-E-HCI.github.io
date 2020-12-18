@@ -119,11 +119,11 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
     const config = {
       headers: {
-        Authorization: `Bearer ${userInfo.token}`,
+        authorization: `Bearer ${userInfo.token}`,
       },
     }
 
-    const { data } = await axios.get(`/api/users/${id}`, config)
+    const { data } = await axios.get(`/api/user/profile/${id}`, config)
 
     dispatch({
       type: USER_DETAILS_SUCCESS,

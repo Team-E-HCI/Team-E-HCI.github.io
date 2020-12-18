@@ -4,11 +4,12 @@ import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Tentang from './Components/Tentang.jsx'
 import KontakKami from './Components/KontakKami'
-import './App.css'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Content from './Components/Content'
 import Timeline from './Components/Timeline'
 import PostDetail from './Components/PostDetail'
+import Profile from './Components/Profile'
+import './App.css'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
         <Route path='/kontak-kami' component={KontakKami} />
         <Route path='/linimasa' component={Timeline} />
         <Route path='/konten/:id' component={PostDetail} />
-        <Route path='/pengguna/:id' component={Home} />
+        <Route path='/pengguna/:id' component={Profile} />
         {/* <Route path="/Tentang-Infotech" component={TentangInfotech}></Route>
         <Route path="/Kontak-Infotech" component={KontakInfotech}></Route>
         <Route path="/Linimasa" component={Linimasa}></Route>

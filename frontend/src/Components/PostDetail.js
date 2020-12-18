@@ -41,15 +41,24 @@ const PostDetail = ({ history, match }) => {
     dispatch(listContentCategorized(category))
     history.push('/linimasa')
   }
+
+  const logoutHandler = () => {
+    history.push('/')
+  }
+
   const [nav, setNav] = useState(
     <Col md={3} lg={2} className='p-0'>
-      <Sidebar onCategory={categoryHandler} />
+      <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
     </Col>
   )
+
   const [account, setAccount] = useState(
     <Row className='px-5'>
       <Col className='font-weight-bold pt-4 pr-5 text-right'>
-        <Link to='/profil' className='text-blue link-blue px-3'>
+        <Link
+          to={`/pengguna/${userInfo._id}`}
+          className='text-blue link-blue px-3'
+        >
           {userInfo && userInfo.nama}
         </Link>
         <Link to='/profil' className='text-blue link-blue px-3'>
@@ -72,7 +81,7 @@ const PostDetail = ({ history, match }) => {
         </Container>
       ) : (
         <Col md={3} lg={2} className='p-0'>
-          <Sidebar onCategory={categoryHandler} />
+          <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
         </Col>
       )
     })
@@ -80,7 +89,10 @@ const PostDetail = ({ history, match }) => {
       mql.matches ? null : (
         <Row className='px-5'>
           <Col className='font-weight-bold pt-4 text-right'>
-            <Link to='/profil' className='text-blue link-blue px-3'>
+            <Link
+              to={`/pengguna/${userInfo._id}`}
+              className='text-blue link-blue px-3'
+            >
               {userInfo && userInfo.nama}
             </Link>
             <Link to='/profil' className='text-blue link-blue px-3'>
@@ -107,17 +119,18 @@ const PostDetail = ({ history, match }) => {
           {content && pengguna && (
             <Container className='mt-4' fluid>
               <Row className='py-2'>
-                <Col xs={3} className='text-right'>
+                <Col xs={3}>
                   <Row>
-                    <Col md={4}>
-                      <Image src={pengguna.avatar} className='w-75' fluid />
-                    </Col>
-                    <Col md={8}>
-                      <Link to={`/pengguna/${pengguna._id}`}>
-                        <h5 className='text-blue link-blue my-auto'>
+                    <Col>
+                      <Image src={pengguna.avatar} className='w-25' fluid />
+                      <span>
+                        <Link
+                          to={`/pengguna/${pengguna._id}`}
+                          className='text-blue link-blue font-weight-bold pl-3'
+                        >
                           {pengguna.nama}
-                        </h5>
-                      </Link>
+                        </Link>
+                      </span>
                     </Col>
                   </Row>
                 </Col>
@@ -167,17 +180,16 @@ const PostDetail = ({ history, match }) => {
               {content.komentar.map((comment) => (
                 <Card className='p-3 my-3'>
                   <Row className='mb-3'>
-                    <Col xs={1} className='px-0 text-center'>
-                      <Image
-                        src={comment.avatar}
-                        className='comment=avatar w-50'
-                        fluid
-                      />
-                    </Col>
-                    <Col xs={11} className='px-0'>
-                      <Link to={`/pengguna/${comment.pengguna}`}>
-                        <h5 className='text-blue link-blue'>{comment.nama}</h5>
-                      </Link>
+                    <Col>
+                      <Image src={comment.avatar} style={{ width: 30 }} />
+                      <span>
+                        <Link
+                          to={`/pengguna/${comment.pengguna}`}
+                          className='text-blue link-blue font-weight-bold pl-3'
+                        >
+                          {comment.nama}
+                        </Link>
+                      </span>
                     </Col>
                   </Row>
                   <p className='text-justify font-weight-bold'>
