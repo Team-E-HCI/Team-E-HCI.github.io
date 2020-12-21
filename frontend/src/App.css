@@ -278,3 +278,31 @@
   padding-left: 5px !important;
   border-radius: 5px !important;
 }
+
+.border-faq {
+  border-left: none;
+  border-right: none;
+  border-top: 2px solid #7dc4f5;
+  border-bottom: 2px solid #7dc4f5;
+}
+
+.title-faq {
+  border-top: none;
+  border-bottom: none;
+  border-left: 4px solid #7dc4f5;
+  border-right: 4px solid #7dc4f5;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #71b9ec;
+  background-color: rgb(245, 245, 245);
+}
+
+.head-faq {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.text-faq {
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
