@@ -23,6 +23,8 @@ const isiKuesioner = asyncHandler(async (req, res, next) => {
 
   const kuesioner = await Kuesioner.create({
     pengguna: akun,
+    nama: akun.nama,
+    email: akun.email,
     pertanyaan1,
     pertanyaan2,
     pertanyaan3,
