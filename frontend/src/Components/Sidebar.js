@@ -29,6 +29,14 @@ const Sidebar = ({ onCategory, onLogout }) => {
         </LinkContainer>
         <ListGroup className='mt-5' variant='flush'>
           <ListGroup.Item>
+            <Link
+              to='/linimasa'
+              className='text-blue link-blue font-weight-bold'
+            >
+              <p>Linimasa</p>
+            </Link>
+          </ListGroup.Item>
+          <ListGroup.Item>
             <Accordion>
               <Accordion.Toggle
                 as={Button}

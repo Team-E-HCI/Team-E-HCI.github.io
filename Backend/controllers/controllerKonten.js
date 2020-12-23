@@ -8,54 +8,53 @@ const vs = require('v-response')
 const asyncHandler = require('express-async-handler')
 
 const tambahPostingan = asyncHandler(async (req, res, next) => {
-  const files = req.files
-  if (files) {
-    try {
-      let urls = []
-      let berkas = async (path) => await upload(path)
-      for (const file of files) {
-        const { path } = file
-        console.log('path', file)
+  // const files = req.files
 
-        const newPath = await berkas(path)
-        urls.push(newPath)
-        fs.unlinkSync(path)
-      }
-      if (urls) {
-        // let body = req.body;
-        let pengguna = await Akun.findById(req.user._id).select('-password')
-        const nama = pengguna.nama
-        // let bodyw = _.extend(body, { pengguna: pengguna }, { gambar: urls });
-        let new_konten = new Konten({
-          pengguna: pengguna,
-          judul: req.body.judul,
-          postingan: req.body.postingan,
-          kategori: req.body.kategori,
-          gambar: urls,
-        })
-        await new_konten
-          .save()
-          .then((saved) => {
-            return res.json(saved)
-          })
-          .catch((error) => {
-            return res.json(error)
-          })
-        const aktifitas = await Aktifitas.create({
-          pengguna: pengguna,
-          pesan: `${nama} telah mengupload konten`,
-        })
+  try {
+    let urls = []
+    // let berkas = async (path) => await upload(path)
+    // for (const file of files) {
+    //   const { path } = file
+    //   console.log('path', file)
 
-        if (aktifitas) {
-          res.status(200)
-          console.log(aktifitas)
-        }
+    //   const newPath = await berkas(path)
+    //   urls.push(newPath)
+    //   fs.unlinkSync(path)
+
+    if (urls) {
+      // let body = req.body;
+      let pengguna = await Akun.findById(req.user._id).select('-password')
+      const nama = pengguna.nama
+      // let bodyw = _.extend(body, { pengguna: pengguna }, { gambar: urls });
+      let new_konten = new Konten({
+        pengguna: pengguna,
+        judul: req.body.judul,
+        postingan: req.body.postingan,
+        kategori: req.body.kategori,
+        gambar: req.body.gambar,
+      })
+      await new_konten
+        .save()
+        .then((saved) => {
+          return res.json(saved)
+        })
+        .catch((error) => {
+          return res.json(error)
+        })
+      const aktifitas = await Aktifitas.create({
+        pengguna: pengguna,
+        pesan: `${nama} telah mengupload konten`,
+      })
+
+      if (aktifitas) {
+        res.status(200)
+        console.log(aktifitas)
       }
-    } catch (error) {
-      res.status(400)
-      console.log('error: ', error)
-      return next(error)
     }
+  } catch (error) {
+    res.status(400)
+    console.log('error: ', error)
+    return next(error)
   }
 
   // // let body = req.body;

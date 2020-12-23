@@ -12,6 +12,9 @@ import {
   CONTENT_COMMENT_REQUEST,
   CONTENT_COMMENT_SUCCESS,
   CONTENT_COMMENT_FAIL,
+  CONTENT_POST_REQUEST,
+  CONTENT_POST_SUCCESS,
+  CONTENT_POST_FAIL,
 } from '../constants/contentConstants'
 
 export const listContent = () => async (dispatch, getState) => {
@@ -72,6 +75,10 @@ export const listContentCategorized = (category) => async (
 
     dispatch({
       type: CONTENT_CATEGORY_SUCCESS,
+    })
+
+    dispatch({
+      type: CONTENT_LIST_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -148,6 +155,46 @@ export const addComment = (id, komen) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: CONTENT_COMMENT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    })
+  }
+}
+
+export const postContent = (judul, postingan, kategori, gambar) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: CONTENT_POST_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    await axios.post(
+      `/api/konten/create`,
+      { judul, postingan, kategori, gambar },
+      config
+    )
+
+    dispatch({
+      type: CONTENT_POST_SUCCESS,
+    })
+  } catch (error) {
+    dispatch({
+      type: CONTENT_POST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

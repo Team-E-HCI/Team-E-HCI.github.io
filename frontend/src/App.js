@@ -9,6 +9,9 @@ import Timeline from './Components/Timeline'
 import PostDetail from './Components/PostDetail'
 import Profile from './Components/Profile'
 import EditProfile from './Components/EditProfile'
+import Ajukan from './Components/Ajukan'
+import Kuisioner from './Components/Kuisioner'
+import FAQ from './Components/FAQ'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -25,6 +28,9 @@ const App = () => {
         <Route path='/konten/:id' component={PostDetail} />
         <Route path='/pengguna/:id' component={Profile} />
         <Route path='/update-pengguna/:id' component={EditProfile} />
+        <Route path='/ajukan-pertanyaan' component={Ajukan} />
+        <Route path='/kuesioner' component={Kuisioner} />
+        <Route path='/faq' component={FAQ} />
         {/* <Route path="/Tentang-Infotech" component={TentangInfotech}></Route>
         <Route path="/Kontak-Infotech" component={KontakInfotech}></Route>
         <Route path="/Linimasa" component={Linimasa}></Route>

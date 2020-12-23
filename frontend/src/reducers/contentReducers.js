@@ -8,6 +8,9 @@ import {
   CONTENT_LIST_FAIL,
   CONTENT_LIST_REQUEST,
   CONTENT_LIST_SUCCESS,
+  CONTENT_POST_FAIL,
+  CONTENT_POST_REQUEST,
+  CONTENT_POST_SUCCESS,
 } from '../constants/contentConstants'
 
 export const contentListReducer = (state = { contents: [] }, action) => {
@@ -28,7 +31,7 @@ export const contentCategoryReducer = (state = { contents: [] }, action) => {
     case CONTENT_CATEGORY_REQUEST:
       return { loading: true, contents: [] }
     case CONTENT_CATEGORY_SUCCESS:
-      return { loading: false, contents: action.payload }
+      return { loading: false, success: true }
     case CONTENT_CATEGORY_FAIL:
       return { loading: false, error: action.payload }
     default:
@@ -56,6 +59,19 @@ export const contentCommentReducer = (state = {}, action) => {
     case CONTENT_DETAIL_SUCCESS:
       return { loading: false, success: true }
     case CONTENT_DETAIL_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const contentPostReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CONTENT_POST_REQUEST:
+      return { loading: true }
+    case CONTENT_POST_SUCCESS:
+      return { loading: false, success: true }
+    case CONTENT_POST_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state

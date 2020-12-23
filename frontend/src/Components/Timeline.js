@@ -27,7 +27,9 @@ const Timeline = ({ history }) => {
     dispatch(listContent())
   }, [])
 
-  const contentCategory = useSelector((state) => state.contentCategory)
+  const allHandler = () => {
+    dispatch(listContent())
+  }
 
   const categoryHandler = (category) => {
     dispatch(listContentCategorized(category))
@@ -105,7 +107,13 @@ const Timeline = ({ history }) => {
             {account}
             <Row className='p-4'>
               <Col>
-                <h3 className='text-blue'>Linimasa</h3>
+                <h3
+                  style={{ cursor: 'pointer' }}
+                  className='text-blue link-blue'
+                  onClick={allHandler}
+                >
+                  Linimasa
+                </h3>
               </Col>
               <Col className='text-right'>
                 <LinkContainer to='/ajukan-pertanyaan'>
@@ -120,11 +128,9 @@ const Timeline = ({ history }) => {
             </Row>
             <Row>
               <Col md={9} className='p-0'>
-                {contentCategory.contents.length === 0
-                  ? contents.map((content) => <Content content={content} />)
-                  : contentCategory.contents.map((content) => (
-                      <Content content={content} />
-                    ))}
+                {contents.map((content) => (
+                  <Content content={content} />
+                ))}
               </Col>
               <Col md={3} className='p-0 mobile-none'>
                 <Card className='p-3'>

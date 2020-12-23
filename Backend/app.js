@@ -9,7 +9,6 @@ const path = require('path')
 dotenv.config()
 
 //passport config
-require('./config/passportGoogle')(passport)
 
 //connect Mongo
 connectDB()
