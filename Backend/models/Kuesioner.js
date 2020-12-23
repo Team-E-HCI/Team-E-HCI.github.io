@@ -5,6 +5,14 @@ const Kuesioner = new mongoose.Schema({
     required: true,
     ref: "Akun",
   },
+  nama:{
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
   pertanyaan1: {
     type: String,
     required: true,
