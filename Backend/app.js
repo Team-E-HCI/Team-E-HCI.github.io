@@ -2,13 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
-const handlebars = require('express-handlebars')
 const connectDB = require('./config/connectDB')
 const path = require('path')
-const passport = require('passport')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
-const cookieParser = require('cookie-parser')
 
 //load config
 dotenv.config()
@@ -28,25 +23,20 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 //sessions
-app.use(
+/*app.use(
   session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
-)
+)*/
 
 //passport middleware initialized and session
-app.use(passport.initialize())
-app.use(passport.session())
-
-//static foler
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 //routes
-app.use('/', require('./routes/index'))
-app.use('/auth', require('./routes/auth'))
 app.use('/api/user', require('./routes/authManual'))
 app.use('/api/konten', require('./routes/konten'))
 app.use('/api/kuesioner', require('./routes/kuesioner'))
