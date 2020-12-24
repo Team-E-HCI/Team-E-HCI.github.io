@@ -245,14 +245,33 @@ const tambahKomentar = asyncHandler(async (req, res) => {
       avatar: pengguna.avatar,
       komen: req.body.komen,
     }
-
-    const notif = {
+      if (koment) {
+      const aktifitas = await Aktifitas.create({
+        pengguna: pengguna,
+        pesan: `${nama} telah mengomentari sebuah konten`,
+      })
+       const notif = {
       pesan: 'Seseorang telah mengomentari pesan Anda.',
-      url: `http://localhost:3000/api/konten/${konten._id}`,
+      url: `http://localhost:3000/konten/${konten._id}`,
+    }
+    pemilik.notifications.push(notif)
+     await pemilik
+      .save()
+      .then((saved) => {
+        return res.status(201).json(saved)
+      })
+      .catch((error) => {
+        return res.json(error)
+      })
+
+      if (aktifitas) {
+        res.status(200)
+        console.log(aktifitas)
+      }
     }
 
     konten.komentar.push(koment)
-    pemilik.notifications.push(notif)
+    
     await konten
       .save()
       .then((saved) => {
@@ -261,27 +280,6 @@ const tambahKomentar = asyncHandler(async (req, res) => {
       .catch((error) => {
         return res.json(error)
       })
-
-    await pemilik
-      .save()
-      .then((saved) => {
-        return res.status(201).json(saved)
-      })
-      .catch((error) => {
-        return res.json(error)
-      })
-
-    if (koment) {
-      const aktifitas = await Aktifitas.create({
-        pengguna: pengguna,
-        pesan: `${nama} telah mengomentari sebuah konten`,
-      })
-
-      if (aktifitas) {
-        res.status(200)
-        console.log(aktifitas)
-      }
-    }
   } else {
     res.status(404)
     throw new Error('Konten tidak ditemukan')
