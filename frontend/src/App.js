@@ -14,6 +14,7 @@ import Kuisioner from './Components/Kuisioner'
 import FAQ from './Components/FAQ'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Notifications from './Components/Notifications'
 
 const App = () => {
   return (
@@ -31,10 +32,7 @@ const App = () => {
         <Route path='/ajukan-pertanyaan' component={Ajukan} />
         <Route path='/kuesioner' component={Kuisioner} />
         <Route path='/faq' component={FAQ} />
-        {/* <Route path="/Tentang-Infotech" component={TentangInfotech}></Route>
-        <Route path="/Kontak-Infotech" component={KontakInfotech}></Route>
-        <Route path="/Linimasa" component={Linimasa}></Route>
-        <Route path="/Ajukan" component={Ajukan}></Route> */}
+        <Route path='/notifikasi' component={Notifications} />
       </Switch>
     </Router>
   )

@@ -72,17 +72,6 @@ const Content = ({ content }) => {
               </Col>
             </Row>
           </Col>
-          <Col xs={2} className='text-center px-0'>
-            <Button onClick={bookmarkHandler} variant='link'>
-              <h5>
-                {bookmarkActive ? (
-                  <FaBookmark className='text-dark' />
-                ) : (
-                  <FaRegBookmark className='text-dark' />
-                )}
-              </h5>
-            </Button>
-          </Col>
         </Row>
       </Card>
     </Container>

@@ -22,6 +22,7 @@ const Profile = ({ history, match }) => {
     dispatch(
       postQuestionaire(question1, question2, question3, question4, question5)
     )
+    history.go(0)
   }
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -57,7 +58,7 @@ const Profile = ({ history, match }) => {
         >
           {userInfo && userInfo.nama}
         </Link>
-        <Link to='/profil' className='text-blue link-blue px-3'>
+        <Link to='/notifikasi' className='text-blue link-blue px-3'>
           Notifikasi
         </Link>
       </Col>
@@ -91,7 +92,7 @@ const Profile = ({ history, match }) => {
             >
               {userInfo && userInfo.nama}
             </Link>
-            <Link to='/profil' className='text-blue link-blue px-3'>
+            <Link to='/notifikasi' className='text-blue link-blue px-3'>
               Notifikasi
             </Link>
           </Col>

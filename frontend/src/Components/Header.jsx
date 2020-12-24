@@ -79,12 +79,12 @@ const Header = () => {
             </LinkContainer>
             {userInfo && (
               <>
-                <LinkContainer to='/'>
+                <LinkContainer to='/kuesioner'>
                   <Nav.Link className='text-blue font-weight-bold px-3'>
                     Kuesioner
                   </Nav.Link>
                 </LinkContainer>
-                <LinkContainer to='/'>
+                <LinkContainer to='/faq'>
                   <Nav.Link className='text-blue font-weight-bold px-3'>
                     FAQ
                   </Nav.Link>

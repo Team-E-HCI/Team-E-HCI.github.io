@@ -47,7 +47,7 @@ const Sidebar = ({ onCategory, onLogout }) => {
                 <p>Kategori</p>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey='0'>
-                <ul className='list-unstyled pl-4'>
+                <ul className='list-unstyled pl-3'>
                   <li className='py-2'>
                     <Link
                       onClick={() => onCategory('gadget-error')}

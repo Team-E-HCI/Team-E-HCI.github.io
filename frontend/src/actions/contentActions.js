@@ -15,6 +15,9 @@ import {
   CONTENT_POST_REQUEST,
   CONTENT_POST_SUCCESS,
   CONTENT_POST_FAIL,
+  CONTENT_DELETE_REQUEST,
+  CONTENT_DELETE_SUCCESS,
+  CONTENT_DELETE_FAIL,
 } from '../constants/contentConstants'
 
 export const listContent = () => async (dispatch, getState) => {
@@ -195,6 +198,40 @@ export const postContent = (judul, postingan, kategori, gambar) => async (
   } catch (error) {
     dispatch({
       type: CONTENT_POST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    })
+  }
+}
+
+export const deleteContent = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: CONTENT_DELETE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.delete(`/api/konten/${id}/`, config)
+
+    dispatch({
+      type: CONTENT_DELETE_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: CONTENT_DELETE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -76,9 +76,6 @@ const Login = ({ history }) => {
             >
               Login
             </button>
-            <a className='forgot-login ml-3' href='/'>
-              Lupa Password?
-            </a>
           </div>
           <div className='col-sm-5 m-2 ml-4 mt-3'>
             <img src={images} alt='' className='mx-auto' width='90%' />

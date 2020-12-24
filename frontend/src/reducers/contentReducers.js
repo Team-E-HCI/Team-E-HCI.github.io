@@ -2,6 +2,9 @@ import {
   CONTENT_CATEGORY_FAIL,
   CONTENT_CATEGORY_REQUEST,
   CONTENT_CATEGORY_SUCCESS,
+  CONTENT_DELETE_FAIL,
+  CONTENT_DELETE_REQUEST,
+  CONTENT_DELETE_SUCCESS,
   CONTENT_DETAIL_FAIL,
   CONTENT_DETAIL_REQUEST,
   CONTENT_DETAIL_SUCCESS,
@@ -72,6 +75,19 @@ export const contentPostReducer = (state = {}, action) => {
     case CONTENT_POST_SUCCESS:
       return { loading: false, success: true }
     case CONTENT_POST_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const contentDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CONTENT_DELETE_REQUEST:
+      return { loading: true }
+    case CONTENT_DELETE_SUCCESS:
+      return { loading: false, success: true, message: action.payload }
+    case CONTENT_DELETE_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state

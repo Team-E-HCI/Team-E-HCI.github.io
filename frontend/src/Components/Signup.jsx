@@ -27,6 +27,7 @@ const Login = ({ history }) => {
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(register(nama, email, password))
+    history.push('/')
   }
 
   return (

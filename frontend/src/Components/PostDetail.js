@@ -61,7 +61,7 @@ const PostDetail = ({ history, match }) => {
         >
           {userInfo && userInfo.nama}
         </Link>
-        <Link to='/profil' className='text-blue link-blue px-3'>
+        <Link to='/notifikasi' className='text-blue link-blue px-3'>
           Notifikasi
         </Link>
       </Col>
@@ -95,7 +95,7 @@ const PostDetail = ({ history, match }) => {
             >
               {userInfo && userInfo.nama}
             </Link>
-            <Link to='/profil' className='text-blue link-blue px-3'>
+            <Link to='/notifikasi' className='text-blue link-blue px-3'>
               Notifikasi
             </Link>
           </Col>

@@ -57,7 +57,7 @@ const EditProfile = ({ history, match }) => {
 
   const updateHandler = () => {
     dispatch(updateUserProfile(nama, email, github, twitter))
-    history.push('/')
+    history.push(`/pengguna/${userInfo._id}`)
   }
 
   const categoryHandler = (category) => {
@@ -84,7 +84,7 @@ const EditProfile = ({ history, match }) => {
         >
           {userInfo && userInfo.nama}
         </Link>
-        <Link to='/profil' className='text-blue link-blue px-3'>
+        <Link to='/notifikasi' className='text-blue link-blue px-3'>
           Notifikasi
         </Link>
       </Col>
@@ -118,7 +118,7 @@ const EditProfile = ({ history, match }) => {
             >
               {userInfo && userInfo.nama}
             </Link>
-            <Link to='/profil' className='text-blue link-blue px-3'>
+            <Link to='/notifikasi' className='text-blue link-blue px-3'>
               Notifikasi
             </Link>
           </Col>

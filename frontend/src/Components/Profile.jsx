@@ -2,14 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../App.css'
-import { Form, Col, Row, ListGroup, Image, Container } from 'react-bootstrap'
+import {
+  Form,
+  Col,
+  Row,
+  ListGroup,
+  Image,
+  Container,
+  Button,
+} from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { FaEdit } from 'react-icons/fa'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import Sidebar from './Sidebar'
 import Header from './Header'
 import { getUserDetails } from '../actions/userActions'
-import { listContentCategorized } from '../actions/contentActions'
+import {
+  listContentCategorized,
+  deleteContent,
+} from '../actions/contentActions'
 
 const Profile = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -29,6 +40,14 @@ const Profile = ({ history, match }) => {
   useEffect(() => {
     dispatch(getUserDetails(match.params.id))
   }, [match.params.id])
+
+  const contentDelete = useSelector((state) => state.contentDelete)
+  const { message, error } = contentDelete
+
+  const deleteHandler = (id) => {
+    dispatch(deleteContent(id))
+    history.go(0)
+  }
 
   const categoryHandler = (category) => {
     dispatch(listContentCategorized(category))
@@ -54,7 +73,7 @@ const Profile = ({ history, match }) => {
         >
           {userInfo && userInfo.nama}
         </Link>
-        <Link to='/profil' className='text-blue link-blue px-3'>
+        <Link to='/notifikasi' className='text-blue link-blue px-3'>
           Notifikasi
         </Link>
       </Col>
@@ -88,7 +107,7 @@ const Profile = ({ history, match }) => {
             >
               {userInfo && userInfo.nama}
             </Link>
-            <Link to='/profil' className='text-blue link-blue px-3'>
+            <Link to='/notifikasi' className='text-blue link-blue px-3'>
               Notifikasi
             </Link>
           </Col>
@@ -212,9 +231,13 @@ const Profile = ({ history, match }) => {
                             <Link to={`/konten/${k._id}`}>{k.judul}</Link>
                           </ListGroup.Item>
                           {userInfo._id === match.params.id && (
-                            <a className='mt-3 edit-profile' href='#'>
-                              <RiDeleteBin6Line />
-                            </a>
+                            <Button
+                              variant='link'
+                              className='mt-3 edit-profile'
+                              onClick={() => deleteHandler(k._id)}
+                            >
+                              <RiDeleteBin6Line className='mb-1' />
+                            </Button>
                           )}
                         </div>
                       ))}
