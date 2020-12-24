@@ -103,7 +103,9 @@ const Notifications = ({ history }) => {
           {notifications.notifications &&
             notifications.notifications.map((n) => (
               <Card className='p-4 my-3'>
-                <p className='text-blue font-weight-bold'>{n.pesan}</p>
+                <Link to={n.url.split('/api')[1]}>
+                  <p className='text-blue font-weight-bold'>{n.pesan}</p>
+                </Link>
               </Card>
             ))}
         </Col>
