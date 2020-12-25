@@ -110,7 +110,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
     const config = {
       headers: {
-        authorization: `Bearer ${userInfo.token}`,
+        'Authorization': `Bearer ${userInfo.token}`,
       },
     }
 

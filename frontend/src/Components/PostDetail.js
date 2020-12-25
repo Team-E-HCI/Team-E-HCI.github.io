@@ -137,7 +137,7 @@ const PostDetail = ({ history, match }) => {
                 <Col xs={7} className='text=left'>
                   <h4 className='text-blue'>{content.judul}</h4>
                 </Col>
-                <Col xs={2}>
+                {/* <Col xs={2}>
                   <Button onClick={bookmarkHandler} variant='link'>
                     <h5>
                       {bookmarkActive ? (
@@ -147,7 +147,7 @@ const PostDetail = ({ history, match }) => {
                       )}
                     </h5>
                   </Button>
-                </Col>
+                </Col> */}
               </Row>
               <Row className='py-2'>
                 <Col>

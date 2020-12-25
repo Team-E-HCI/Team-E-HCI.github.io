@@ -36,12 +36,12 @@ const Header = () => {
                 id='basic-nav-dropdown'
                 className='font-weight-bold'
               >
-                <LinkContainer to='/profil'>
+                <LinkContainer to={`/pengguna/${userInfo._id}`}>
                   <NavDropdown.Item className='text-blue font-weight-bold my-2'>
                     Profil
                   </NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to='/'>
+                <LinkContainer to='/notifikasi'>
                   <NavDropdown.Item className='text-blue font-weight-bold my-2'>
                     Notifikasi
                   </NavDropdown.Item>

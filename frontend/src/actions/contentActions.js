@@ -33,7 +33,7 @@ export const listContent = () => async (dispatch, getState) => {
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${userInfo.token}`,
+        'Authorization': `Bearer ${userInfo.token}`,
       },
     }
 

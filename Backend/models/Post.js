@@ -52,8 +52,8 @@ const postSchema = mongoose.Schema({
     required: true,
   },
   tanggalDibuat: {
-    type: String,
-    default: Date,
+    type: Date,
+    default: Date.now,
   },
 })
 

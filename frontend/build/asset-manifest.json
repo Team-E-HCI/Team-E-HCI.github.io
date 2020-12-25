@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.06cfec09.chunk.css",
+    "main.js": "/static/js/main.7d969ec3.chunk.js",
+    "main.js.map": "/static/js/main.7d969ec3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ff2f34b7.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ff2f34b7.js.map",
+    "static/css/2.43b2b750.chunk.css": "/static/css/2.43b2b750.chunk.css",
+    "static/js/2.c3289de6.chunk.js": "/static/js/2.c3289de6.chunk.js",
+    "static/js/2.c3289de6.chunk.js.map": "/static/js/2.c3289de6.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.43b2b750.chunk.css.map": "/static/css/2.43b2b750.chunk.css.map",
+    "static/css/main.06cfec09.chunk.css.map": "/static/css/main.06cfec09.chunk.css.map",
+    "static/js/2.c3289de6.chunk.js.LICENSE.txt": "/static/js/2.c3289de6.chunk.js.LICENSE.txt",
+    "static/media/Home.a3a55d92.png": "/static/media/Home.a3a55d92.png",
+    "static/media/Login.3d19fa0e.png": "/static/media/Login.3d19fa0e.png",
+    "static/media/Logo.5610a297.png": "/static/media/Logo.5610a297.png",
+    "static/media/Pertanyaan.13089947.png": "/static/media/Pertanyaan.13089947.png",
+    "static/media/App.css": "/static/media/Roboto-Regular.f25bd059.ttf",
+    "static/media/kontak.694c5755.png": "/static/media/kontak.694c5755.png",
+    "static/media/tentang.f483a1be.png": "/static/media/tentang.f483a1be.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ff2f34b7.js",
+    "static/css/2.43b2b750.chunk.css",
+    "static/js/2.c3289de6.chunk.js",
+    "static/css/main.06cfec09.chunk.css",
+    "static/js/main.7d969ec3.chunk.js"
+  ]
+}

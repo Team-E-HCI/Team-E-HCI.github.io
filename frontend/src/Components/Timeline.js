@@ -22,7 +22,7 @@ const Timeline = ({ history }) => {
 
   const contentList = useSelector((state) => state.contentList)
   const { contents } = contentList
-
+  console.log(contentList)
   useEffect(() => {
     dispatch(listContent())
   }, [])
