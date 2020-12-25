@@ -127,7 +127,7 @@ const tampilkanSeluruhKonten = asyncHandler(async (req, res) => {
     res.json(konten)
   } else {
     res.status(404)
-    throw new Error('Konten tidak ditemukan')
+    res.json({ message: 'Konten tidak ditemukan' })
   }
 })
 
@@ -245,24 +245,24 @@ const tambahKomentar = asyncHandler(async (req, res) => {
       avatar: pengguna.avatar,
       komen: req.body.komen,
     }
-      if (koment) {
+    if (koment) {
       const aktifitas = await Aktifitas.create({
         pengguna: pengguna,
         pesan: `${nama} telah mengomentari sebuah konten`,
       })
-       const notif = {
-      pesan: 'Seseorang telah mengomentari pesan Anda.',
-      url: `http://localhost:3000/konten/${konten._id}`,
-    }
-    pemilik.notifications.push(notif)
-     await pemilik
-      .save()
-      .then((saved) => {
-        return res.status(201).json(saved)
-      })
-      .catch((error) => {
-        return res.json(error)
-      })
+      const notif = {
+        pesan: 'Seseorang telah mengomentari pesan Anda.',
+        url: `http://localhost:3000/konten/${konten._id}`,
+      }
+      pemilik.notifications.push(notif)
+      await pemilik
+        .save()
+        .then((saved) => {
+          return res.status(201).json(saved)
+        })
+        .catch((error) => {
+          return res.json(error)
+        })
 
       if (aktifitas) {
         res.status(200)
@@ -271,7 +271,7 @@ const tambahKomentar = asyncHandler(async (req, res) => {
     }
 
     konten.komentar.push(koment)
-    
+
     await konten
       .save()
       .then((saved) => {

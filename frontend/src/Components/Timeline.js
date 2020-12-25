@@ -25,7 +25,7 @@ const Timeline = ({ history }) => {
 
   useEffect(() => {
     dispatch(listContent())
-  }, [])
+  }, [dispatch])
 
   const allHandler = () => {
     dispatch(listContent())
@@ -63,10 +63,6 @@ const Timeline = ({ history }) => {
   )
   const mql = window.matchMedia('(max-width: 768px)')
 
-  useEffect(() => {
-    mql.addEventListener('change', mediaQueryChanged)
-  }, [mql.matches])
-
   const mediaQueryChanged = () => {
     setNav(() => {
       return mql.matches ? (
@@ -97,6 +93,10 @@ const Timeline = ({ history }) => {
       )
     )
   }
+
+  useEffect(() => {
+    mql.addEventListener('change', mediaQueryChanged)
+  }, [mql, mediaQueryChanged])
 
   return (
     <Container fluid>

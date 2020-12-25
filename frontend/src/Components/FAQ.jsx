@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../App.css'
-import { Form, Button, Col, Row, Container } from 'react-bootstrap'
+import { Form, Col, Row, Container } from 'react-bootstrap'
 import { listContentCategorized } from '../actions/contentActions'
 import Sidebar from './Sidebar'
 import Header from './Header'
@@ -51,10 +51,6 @@ const FAQ = ({ history, match }) => {
   )
   const mql = window.matchMedia('(max-width: 768px)')
 
-  useEffect(() => {
-    mql.addEventListener('change', mediaQueryChanged)
-  }, [mql.matches])
-
   const mediaQueryChanged = () => {
     setNav(() => {
       return mql.matches ? (
@@ -85,6 +81,11 @@ const FAQ = ({ history, match }) => {
       )
     )
   }
+
+  useEffect(() => {
+    mql.addEventListener('change', mediaQueryChanged)
+  }, [mql, mediaQueryChanged])
+
   return (
     <>
       <div className='container-fluid p-0'>

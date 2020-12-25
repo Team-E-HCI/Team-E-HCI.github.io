@@ -12,6 +12,7 @@ import {
   Col,
   Row,
   Container,
+  Image,
 } from 'react-bootstrap'
 import ajukan from '../Assets/Pertanyaan.png'
 import Sidebar from './Sidebar'
@@ -20,9 +21,10 @@ import { postContent, listContentCategorized } from '../actions/contentActions'
 
 const Ajukan = ({ history, match }) => {
   const [category, setCategory] = useState('')
-  const [image, setImage] = useState('')
+  const [images, setImages] = useState('')
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleSelect = (e) => {
     console.log(e)
@@ -30,21 +32,28 @@ const Ajukan = ({ history, match }) => {
   }
 
   const handleChange = async (e) => {
+    setLoading(true)
+
     const formData = new FormData()
-    Object.values(e.target.files).map((file) => {
+    Object.values(e.target.files).forEach((file) => {
       formData.append('gambar', file)
     })
 
     await axios
       .post('/api/konten/upload', formData)
-      .then((res) => setImage(res.data))
+      .then((res) => {
+        console.log(res.data)
+        return setImages(res.data)
+      })
       .catch((err) => console.log(err))
+
+    setLoading(false)
   }
 
   const dispatch = useDispatch()
 
   const submitHandler = () => {
-    dispatch(postContent(title, body, category, image))
+    dispatch(postContent(title, body, category, images))
     history.push('/linimasa')
   }
 
@@ -132,7 +141,7 @@ const Ajukan = ({ history, match }) => {
           <Col md={9} lg={10}>
             {account}
             <div className='row'>
-              <div className='col-sm-6 offset-1'>
+              <div className='col-md-6 offset-1'>
                 <h1 className='mt-3 ajukan-content'>Ajukan Pertanyaan</h1>
                 <p className='mt-4 text-ajukan'>Judul</p>
                 <InputGroup className='mb-3'>
@@ -169,13 +178,26 @@ const Ajukan = ({ history, match }) => {
                       value={body}
                     />
                   </Form.Group>
+                  <p className='mt-3 text-ajukan'>Upload Gambar</p>
                   <Form.Group>
                     <Form.File
                       id='exampleFormControlFile1'
-                      label='Upload Gambar/Video'
                       onChange={handleChange}
                       multiple
                     />
+                    {loading ? (
+                      <h5>Loading....</h5>
+                    ) : (
+                      images &&
+                      images.map((image) => (
+                        <Image
+                          className='m-1'
+                          src={image}
+                          style={{ height: '10rem', margin: '1rem' }}
+                          fluid
+                        />
+                      ))
+                    )}
                   </Form.Group>
                 </Form>
                 <Button
@@ -186,7 +208,7 @@ const Ajukan = ({ history, match }) => {
                   Ajukan
                 </Button>
               </div>
-              <div className='col-md-4 ml-5 my-auto'>
+              <div className='col-md-4 ml-5 my-auto mobile-none'>
                 <img
                   src={ajukan}
                   alt='Home-Ilustration'

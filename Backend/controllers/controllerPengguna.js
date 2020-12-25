@@ -21,6 +21,8 @@ const authManual = asyncHandler(async (req, res) => {
       nama: akun.nama,
       email: akun.email,
       avatar: akun.avatar,
+      github: akun.github,
+      twitter: akun.twitter,
       token: generateToken(akun._id),
     })
 

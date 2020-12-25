@@ -2,13 +2,14 @@
   "name": "infotech-backend",
   "version": "1.0.0",
   "description": "Folder dan File untuk Backend website Infotech",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node app",
-    "server": "nodemon Backend/app",
+    "start": "cross-env NODE_ENV=production node server",
+    "server": "nodemon server",
     "client": "npm start --prefix frontend",
     "development": "concurrently \"npm run server\" \"npm run client\"",
-    "dev": "cross-env NODE_ENV=develop nodemon app"
+    "dev": "cross-env NODE_ENV=develop nodemon server",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Abdullah Azzam",
   "license": "MIT",
@@ -19,6 +20,7 @@
     "cloudinary": "^1.23.0",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

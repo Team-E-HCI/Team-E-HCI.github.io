@@ -7,7 +7,6 @@ import {
   detailContent,
   addComment,
 } from '../actions/contentActions'
-import { FaBookmark, FaRegBookmark } from 'react-icons/fa'
 import Sidebar from './Sidebar'
 import Header from './Header'
 
@@ -25,11 +24,10 @@ const PostDetail = ({ history, match }) => {
 
   const contentDetail = useSelector((state) => state.contentDetail)
   const { content, loading, error } = contentDetail
-  const { pengguna } = content
 
   useEffect(() => {
     dispatch(detailContent(match.params.id))
-  }, [])
+  }, [dispatch, match])
 
   const [komen, setKomen] = useState('')
 
@@ -69,10 +67,6 @@ const PostDetail = ({ history, match }) => {
   )
   const mql = window.matchMedia('(max-width: 768px)')
 
-  useEffect(() => {
-    mql.addEventListener('change', mediaQueryChanged)
-  }, [mql.matches])
-
   const mediaQueryChanged = () => {
     setNav(() => {
       return mql.matches ? (
@@ -104,11 +98,9 @@ const PostDetail = ({ history, match }) => {
     )
   }
 
-  const [bookmarkActive, setBookmarkActive] = useState(false)
-
-  const bookmarkHandler = () => {
-    setBookmarkActive((prev) => !prev)
-  }
+  useEffect(() => {
+    mql.addEventListener('change', mediaQueryChanged)
+  }, [mql, mediaQueryChanged])
 
   return (
     <Container fluid>
@@ -119,22 +111,26 @@ const PostDetail = ({ history, match }) => {
           {loading ? (
             <h5 className='pl-3'>Loading...</h5>
           ) : error ? (
-            <h5 className='pl-3'>{error}</h5>
+            <h5 className='pl-3'>{error.statusText}</h5>
           ) : (
             content &&
-            pengguna && (
+            content.pengguna && (
               <Container className='mt-4' fluid>
                 <Row className='py-2'>
                   <Col xs={3}>
                     <Row>
                       <Col>
-                        <Image src={pengguna.avatar} className='w-25' fluid />
+                        <Image
+                          src={content.pengguna.avatar}
+                          className='w-25'
+                          fluid
+                        />
                         <span>
                           <Link
-                            to={`/pengguna/${pengguna._id}`}
+                            to={`/pengguna/${content.pengguna._id}`}
                             className='text-blue link-blue font-weight-bold pl-3'
                           >
-                            {pengguna.nama}
+                            {content.pengguna.nama}
                           </Link>
                         </span>
                       </Col>
@@ -151,7 +147,7 @@ const PostDetail = ({ history, match }) => {
                     </p>
                     {content.gambar &&
                       content.gambar.map((g) => (
-                        <a href={g} target='_blank'>
+                        <a href={g} target='_blank' rel='noreferrer'>
                           <Image
                             style={{ height: '10rem', margin: '1rem' }}
                             src={g}

@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { register } from '../actions/userActions'
 import '../App.css'
-import { FormControl, InputGroup, Button } from 'react-bootstrap'
-import { BsFillPersonFill } from 'react-icons/bs'
-import { FaKey } from 'react-icons/fa'
-import images from '../Assets/Login.png'
+import { FormControl } from 'react-bootstrap'
 import Header from './Header'
 
 const Login = ({ history }) => {

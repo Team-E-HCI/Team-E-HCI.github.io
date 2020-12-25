@@ -51,10 +51,6 @@ const Notifications = ({ history }) => {
   )
   const mql = window.matchMedia('(max-width: 768px)')
 
-  useEffect(() => {
-    mql.addEventListener('change', mediaQueryChanged)
-  }, [mql.matches])
-
   const mediaQueryChanged = () => {
     setNav(() => {
       return mql.matches ? (
@@ -86,12 +82,16 @@ const Notifications = ({ history }) => {
     )
   }
 
+  useEffect(() => {
+    mql.addEventListener('change', mediaQueryChanged)
+  }, [mql, mediaQueryChanged])
+
   const userNotifications = useSelector((state) => state.userNotifications)
   const { notifications, loading, error } = userNotifications
 
   useEffect(() => {
     dispatch(getUserNotifications())
-  }, [])
+  }, [dispatch])
 
   return (
     <Container fluid>

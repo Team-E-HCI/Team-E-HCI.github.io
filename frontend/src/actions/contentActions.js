@@ -33,7 +33,7 @@ export const listContent = () => async (dispatch, getState) => {
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
     }
 
@@ -146,11 +146,7 @@ export const addComment = (id, komen) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(
-      `/api/konten/${id}/komentar`,
-      { komen },
-      config
-    )
+    await axios.post(`/api/konten/${id}/komentar`, { komen }, config)
 
     dispatch({
       type: CONTENT_COMMENT_SUCCESS,

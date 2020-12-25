@@ -40,7 +40,7 @@ const Profile = ({ history, match }) => {
 
   useEffect(() => {
     dispatch(getUserDetails(match.params.id))
-  }, [match.params.id])
+  }, [match, dispatch])
 
   const deleteHandler = (id) => {
     dispatch(deleteContent(id))
@@ -77,11 +77,8 @@ const Profile = ({ history, match }) => {
       </Col>
     </Row>
   )
-  const mql = window.matchMedia('(max-width: 768px)')
 
-  useEffect(() => {
-    mql.addEventListener('change', mediaQueryChanged)
-  }, [mql.matches])
+  const mql = window.matchMedia('(max-width: 768px)')
 
   const mediaQueryChanged = () => {
     setNav(() => {
@@ -113,6 +110,10 @@ const Profile = ({ history, match }) => {
       )
     )
   }
+
+  useEffect(() => {
+    mql.addEventListener('change', mediaQueryChanged)
+  }, [mql, mediaQueryChanged])
 
   return (
     <>
