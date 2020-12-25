@@ -17,7 +17,6 @@ import ajukan from '../Assets/Pertanyaan.png'
 import Sidebar from './Sidebar'
 import Header from './Header'
 import { postContent, listContentCategorized } from '../actions/contentActions'
-import { FiUpload } from 'react-icons/fi'
 
 const Ajukan = ({ history, match }) => {
   const [category, setCategory] = useState('')
@@ -58,9 +57,6 @@ const Ajukan = ({ history, match }) => {
     }
   }, [history, userInfo])
 
-  const userDetails = useSelector((state) => state.userDetails)
-  const { loading, user } = userDetails
-
   const categoryHandler = (category) => {
     dispatch(listContentCategorized(category))
     history.push('/linimasa')
@@ -93,10 +89,6 @@ const Ajukan = ({ history, match }) => {
   )
   const mql = window.matchMedia('(max-width: 768px)')
 
-  useEffect(() => {
-    mql.addEventListener('change', mediaQueryChanged)
-  }, [mql.matches])
-
   const mediaQueryChanged = () => {
     setNav(() => {
       return mql.matches ? (
@@ -127,6 +119,10 @@ const Ajukan = ({ history, match }) => {
       )
     )
   }
+
+  useEffect(() => {
+    mql.addEventListener('change', mediaQueryChanged)
+  }, [mql, mediaQueryChanged])
 
   return (
     <>

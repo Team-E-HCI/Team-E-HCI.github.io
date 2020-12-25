@@ -21,7 +21,7 @@ const Timeline = ({ history }) => {
   const dispatch = useDispatch()
 
   const contentList = useSelector((state) => state.contentList)
-  const { contents } = contentList
+  const { contents, loading, error } = contentList
 
   useEffect(() => {
     dispatch(listContent())
@@ -128,9 +128,13 @@ const Timeline = ({ history }) => {
             </Row>
             <Row>
               <Col md={9} className='p-0'>
-                {contents.map((content) => (
-                  <Content content={content} />
-                ))}
+                {loading ? (
+                  <h5 className='pl-3'>Loading....</h5>
+                ) : error ? (
+                  <h5 className='pl-3'>{error}</h5>
+                ) : (
+                  contents.map((content) => <Content content={content} />)
+                )}
               </Col>
               <Col md={3} className='p-0 mobile-none'>
                 <Card className='p-3'>

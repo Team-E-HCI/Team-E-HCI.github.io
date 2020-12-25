@@ -87,7 +87,7 @@ const Notifications = ({ history }) => {
   }
 
   const userNotifications = useSelector((state) => state.userNotifications)
-  const { notifications } = userNotifications
+  const { notifications, loading, error } = userNotifications
 
   useEffect(() => {
     dispatch(getUserNotifications())
@@ -100,14 +100,20 @@ const Notifications = ({ history }) => {
         <Col md={9} lg={10}>
           {account}
           <h4 className='text-blue'>Notifikasi</h4>
-          {notifications.notifications &&
+          {loading ? (
+            <h5 className='pl-3'>Loading...</h5>
+          ) : error ? (
+            <h5 className='pl-3'>{error}</h5>
+          ) : (
+            notifications.notifications &&
             notifications.notifications.map((n) => (
               <Card className='p-4 my-3'>
                 <Link to={n.url.split('/api')[1]}>
                   <p className='text-blue font-weight-bold'>{n.pesan}</p>
                 </Link>
               </Card>
-            ))}
+            ))
+          )}
         </Col>
       </Row>
     </Container>

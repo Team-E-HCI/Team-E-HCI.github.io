@@ -2,26 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../App.css'
-import {
-  Form,
-  Col,
-  Row,
-  ListGroup,
-  Image,
-  Container,
-  Button,
-} from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Form, Col, Row, Image, Container, Button } from 'react-bootstrap'
 import Sidebar from './Sidebar'
 import Header from './Header'
-import {
-  getUserDetails,
-  updateUserProfile,
-  login,
-} from '../actions/userActions'
+import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { listContentCategorized } from '../actions/contentActions'
-import { FaEdit } from 'react-icons/fa'
-import { RiDeleteBin6Line } from 'react-icons/ri'
 
 const EditProfile = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -41,22 +26,22 @@ const EditProfile = ({ history, match }) => {
     if (userInfo._id !== match.params.id) {
       setMessage('Unauthorized Access')
     }
-  }, [])
+  }, [userInfo, match])
 
   const userDetails = useSelector((state) => state.userDetails)
-  const { loading, user } = userDetails
+  const { loading, user, error } = userDetails
 
   useEffect(() => {
     dispatch(getUserDetails(match.params.id))
-  }, [])
+  }, [match, userInfo, dispatch])
 
   const [nama, setNama] = useState(userInfo.nama)
   const [email, setEmail] = useState(userInfo.email)
   const [github, setGithub] = useState(userInfo.github)
   const [twitter, setTwitter] = useState(userInfo.twitter)
 
-  const updateHandler = () => {
-    dispatch(updateUserProfile(nama, email, github, twitter))
+  const updateHandler = async () => {
+    await dispatch(updateUserProfile(nama, email, github, twitter))
     history.push(`/pengguna/${userInfo._id}`)
   }
 
@@ -92,10 +77,6 @@ const EditProfile = ({ history, match }) => {
   )
   const mql = window.matchMedia('(max-width: 768px)')
 
-  useEffect(() => {
-    mql.addEventListener('change', mediaQueryChanged)
-  }, [mql.matches])
-
   const mediaQueryChanged = () => {
     setNav(() => {
       return mql.matches ? (
@@ -127,6 +108,10 @@ const EditProfile = ({ history, match }) => {
     )
   }
 
+  useEffect(() => {
+    mql.addEventListener('change', mediaQueryChanged)
+  }, [mql, mediaQueryChanged])
+
   return (
     <>
       <div className='container-fluid p-0'>
@@ -134,11 +119,13 @@ const EditProfile = ({ history, match }) => {
           {nav}
           <Col>
             {account}
-
             {message ? (
               <h1>{message}</h1>
+            ) : loading ? (
+              <h5 className='pl-3'>Loading...</h5>
+            ) : error ? (
+              <h5 className='pl-3'>{error}</h5>
             ) : (
-              !loading &&
               user && (
                 <>
                   <h1 className='text-center mt-5 text-blue font-weight-bold'>
@@ -202,7 +189,7 @@ const EditProfile = ({ history, match }) => {
                         <Col className='col-sm-6'>
                           <Form.Control
                             plaintext
-                            defaultValue={github}
+                            defaultValue={user.github}
                             onChange={(e) => setGithub(e.target.value)}
                             className='form-border'
                           />
@@ -220,7 +207,7 @@ const EditProfile = ({ history, match }) => {
                         <Col className='col-sm-6'>
                           <Form.Control
                             plaintext
-                            defaultValue={twitter}
+                            defaultValue={user.twitter}
                             onChange={(e) => setTwitter(e.target.value)}
                             className='form-border'
                           />

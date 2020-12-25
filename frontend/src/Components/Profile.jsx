@@ -36,13 +36,11 @@ const Profile = ({ history, match }) => {
 
   const userDetails = useSelector((state) => state.userDetails)
   const { loading, user } = userDetails
+  const userError = userDetails.error
 
   useEffect(() => {
     dispatch(getUserDetails(match.params.id))
   }, [match.params.id])
-
-  const contentDelete = useSelector((state) => state.contentDelete)
-  const { message, error } = contentDelete
 
   const deleteHandler = (id) => {
     dispatch(deleteContent(id))
@@ -123,127 +121,134 @@ const Profile = ({ history, match }) => {
           {nav}
           <Col md={9} lg={10}>
             {account}
-            {!loading && user && (
-              <div className='row ml-1 mr-1 mt-3'>
-                <div className='col-sm-4 my-auto mx-auto'>
-                  <Image
-                    src={userInfo.avatar}
-                    className='mx-auto'
-                    style={{ display: 'flex' }}
-                    width='60%'
-                    roundedCircle
-                  />
-                </div>
-                <div className='col-sm-5'>
-                  <div style={{ display: 'flex' }}>
-                    <h1 className='profile-header mt-3'>Profil</h1>
-                    {userInfo._id === match.params.id && (
-                      <LinkContainer
-                        className='mt-4 ml-auto edit-profile'
-                        to={`/update-pengguna/${user._id}`}
-                      >
-                        <FaEdit />
-                      </LinkContainer>
-                    )}
+            {loading ? (
+              <h5 className='pl-3'>Loading...</h5>
+            ) : userError ? (
+              <h5 className='pl-3'>{userError}</h5>
+            ) : (
+              user && (
+                <div className='row ml-1 mr-1 mt-3'>
+                  <div className='col-sm-4 my-auto mx-auto'>
+                    <Image
+                      src={userInfo.avatar}
+                      className='mx-auto'
+                      style={{ display: 'flex' }}
+                      width='60%'
+                      roundedCircle
+                    />
                   </div>
-                  <Form.Group
-                    as={Row}
-                    className='profile-content'
-                    controlId='formPlaintextName'
-                  >
-                    <Form.Label column className='col-sm-4'>
-                      Nama Lengkap
-                    </Form.Label>
-                    <Col className='col-sm-6'>
-                      <Form.Control
-                        plaintext
-                        readOnly
-                        defaultValue={user.name}
-                      />
-                    </Col>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Row}
-                    className='profile-content'
-                    controlId='formPlaintextName'
-                  >
-                    <Form.Label column className='col-sm-4'>
-                      Email
-                    </Form.Label>
-                    <Col className='col-sm-6'>
-                      <Form.Control
-                        plaintext
-                        readOnly
-                        defaultValue={user.email}
-                      />
-                    </Col>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Row}
-                    className='profile-content'
-                    controlId='formPlaintextName'
-                  >
-                    <Form.Label column className='col-sm-4'>
-                      Github
-                    </Form.Label>
-                    <Col className='col-sm-6'>
-                      <Form.Control
-                        plaintext
-                        readOnly
-                        defaultValue={user.github}
-                      />
-                    </Col>
-                  </Form.Group>
-
-                  <Form.Group
-                    as={Row}
-                    className='profile-content'
-                    controlId='formPlaintextName'
-                  >
-                    <Form.Label column className='col-sm-4'>
-                      Twitter
-                    </Form.Label>
-                    <Col className='col-sm-6'>
-                      <Form.Control
-                        plaintext
-                        readOnly
-                        defaultValue={user.twitter}
-                      />
-                    </Col>
-                  </Form.Group>
-                </div>
-                <div className='col-sm-3'></div>
-                <div className='col-sm-12'>
-                  <h1 className='profile-header mt-5'>Riwayat Pertanyaan</h1>
-                  <ListGroup className='mt-5 mb-5'>
-                    {user.konten &&
-                      user.konten.map((k) => (
-                        <div
-                          className='question-profile'
-                          style={{ display: 'flex' }}
+                  <div className='col-sm-5'>
+                    <div style={{ display: 'flex' }}>
+                      <h1 className='profile-header mt-3'>Profil</h1>
+                      {userInfo._id === match.params.id && (
+                        <LinkContainer
+                          className='mt-4 ml-auto edit-profile'
+                          to={`/update-pengguna/${user._id}`}
+                          style={{ cursor: 'pointer' }}
                         >
-                          <ListGroup.Item
-                            variant='primary'
-                            className='mt-2 w-100 mr-3'
+                          <FaEdit />
+                        </LinkContainer>
+                      )}
+                    </div>
+                    <Form.Group
+                      as={Row}
+                      className='profile-content'
+                      controlId='formPlaintextName'
+                    >
+                      <Form.Label column className='col-sm-4'>
+                        Nama Lengkap
+                      </Form.Label>
+                      <Col className='col-sm-6'>
+                        <Form.Control
+                          plaintext
+                          readOnly
+                          defaultValue={user.name}
+                        />
+                      </Col>
+                    </Form.Group>
+
+                    <Form.Group
+                      as={Row}
+                      className='profile-content'
+                      controlId='formPlaintextName'
+                    >
+                      <Form.Label column className='col-sm-4'>
+                        Email
+                      </Form.Label>
+                      <Col className='col-sm-6'>
+                        <Form.Control
+                          plaintext
+                          readOnly
+                          defaultValue={user.email}
+                        />
+                      </Col>
+                    </Form.Group>
+
+                    <Form.Group
+                      as={Row}
+                      className='profile-content'
+                      controlId='formPlaintextName'
+                    >
+                      <Form.Label column className='col-sm-4'>
+                        Github
+                      </Form.Label>
+                      <Col className='col-sm-6'>
+                        <Form.Control
+                          plaintext
+                          readOnly
+                          defaultValue={user.github}
+                        />
+                      </Col>
+                    </Form.Group>
+
+                    <Form.Group
+                      as={Row}
+                      className='profile-content'
+                      controlId='formPlaintextName'
+                    >
+                      <Form.Label column className='col-sm-4'>
+                        Twitter
+                      </Form.Label>
+                      <Col className='col-sm-6'>
+                        <Form.Control
+                          plaintext
+                          readOnly
+                          defaultValue={user.twitter}
+                        />
+                      </Col>
+                    </Form.Group>
+                  </div>
+                  <div className='col-sm-3'></div>
+                  <div className='col-sm-12'>
+                    <h1 className='profile-header mt-5'>Riwayat Pertanyaan</h1>
+                    <ListGroup className='mt-5 mb-5'>
+                      {user.konten &&
+                        user.konten.map((k) => (
+                          <div
+                            className='question-profile'
+                            style={{ display: 'flex' }}
                           >
-                            <Link to={`/konten/${k._id}`}>{k.judul}</Link>
-                          </ListGroup.Item>
-                          {userInfo._id === match.params.id && (
-                            <Button
-                              variant='link'
-                              className='mt-3 edit-profile'
-                              onClick={() => deleteHandler(k._id)}
+                            <ListGroup.Item
+                              variant='primary'
+                              className='mt-2 w-100 mr-3'
                             >
-                              <RiDeleteBin6Line className='mb-1' />
-                            </Button>
-                          )}
-                        </div>
-                      ))}
-                  </ListGroup>
+                              <Link to={`/konten/${k._id}`}>{k.judul}</Link>
+                            </ListGroup.Item>
+                            {userInfo._id === match.params.id && (
+                              <Button
+                                variant='link'
+                                className='mt-3 edit-profile'
+                                onClick={() => deleteHandler(k._id)}
+                              >
+                                <RiDeleteBin6Line className='mb-1' />
+                              </Button>
+                            )}
+                          </div>
+                        ))}
+                    </ListGroup>
+                  </div>
                 </div>
-              </div>
+              )
             )}
           </Col>
         </Row>

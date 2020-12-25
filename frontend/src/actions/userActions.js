@@ -155,7 +155,7 @@ export const updateUserProfile = (nama, email, github, twitter) => async (
       },
     }
 
-    const { data } = await axios.put(
+    const { data } = await axios.post(
       `/api/user/profile/update`,
       { nama, email, github, twitter },
       config
@@ -165,10 +165,20 @@ export const updateUserProfile = (nama, email, github, twitter) => async (
       type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data,
     })
+
+    const login = {
+      _id: data._id,
+      nama: data.nama,
+      email: data.email,
+      avatar: data.avatar,
+      token: data.token,
+    }
+
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      payload: data,
+      payload: login,
     })
+
     localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     const message =

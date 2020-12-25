@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import {
   Row,
@@ -9,21 +9,9 @@ import {
   Badge,
   Image,
 } from 'react-bootstrap'
-import {
-  FaHeart,
-  FaRegHeart,
-  FaComment,
-  FaBookmark,
-  FaRegBookmark,
-} from 'react-icons/fa'
+import { FaComment } from 'react-icons/fa'
 
 const Content = ({ content }) => {
-  const [bookmarkActive, setBookmarkActive] = useState(false)
-
-  const bookmarkHandler = () => {
-    setBookmarkActive((prev) => !prev)
-  }
-
   return (
     <Container className='p-0' fluid>
       <Card className='px-2 py-4'>

@@ -24,7 +24,7 @@ const PostDetail = ({ history, match }) => {
   }, [history, userInfo])
 
   const contentDetail = useSelector((state) => state.contentDetail)
-  const { content } = contentDetail
+  const { content, loading, error } = contentDetail
   const { pengguna } = content
 
   useEffect(() => {
@@ -116,98 +116,94 @@ const PostDetail = ({ history, match }) => {
         {nav}
         <Col md={9} lg={10}>
           {account}
-          {content && pengguna && (
-            <Container className='mt-4' fluid>
-              <Row className='py-2'>
-                <Col xs={3}>
-                  <Row>
-                    <Col>
-                      <Image src={pengguna.avatar} className='w-25' fluid />
-                      <span>
-                        <Link
-                          to={`/pengguna/${pengguna._id}`}
-                          className='text-blue link-blue font-weight-bold pl-3'
-                        >
-                          {pengguna.nama}
-                        </Link>
-                      </span>
-                    </Col>
-                  </Row>
-                </Col>
-                <Col xs={7} className='text=left'>
-                  <h4 className='text-blue'>{content.judul}</h4>
-                </Col>
-                <Col xs={2}>
-                  <Button onClick={bookmarkHandler} variant='link'>
-                    <h5>
-                      {bookmarkActive ? (
-                        <FaBookmark className='text-dark' />
-                      ) : (
-                        <FaRegBookmark className='text-dark' />
-                      )}
-                    </h5>
-                  </Button>
-                </Col>
-              </Row>
-              <Row className='py-2'>
-                <Col>
-                  <p className='text-justify font-weight-bold'>
-                    {content.postingan}
-                  </p>
-                  {content.gambar &&
-                    content.gambar.map((g) => (
-                      <a href={g} target='_blank'>
-                        <Image
-                          style={{ height: '10rem', margin: '1rem' }}
-                          src={g}
-                          fluid
-                        />
-                      </a>
-                    ))}
-                </Col>
-              </Row>
-              <Form onSubmit={commentHandler} className='py-2'>
-                <Row>
-                  <Col xs={10}>
-                    <Form.Control
-                      controlId='komen'
-                      value={komen}
-                      onChange={(e) => setKomen(e.target.value)}
-                      placeholder='Berikan Jawaban Anda'
-                    />
+          {loading ? (
+            <h5 className='pl-3'>Loading...</h5>
+          ) : error ? (
+            <h5 className='pl-3'>{error}</h5>
+          ) : (
+            content &&
+            pengguna && (
+              <Container className='mt-4' fluid>
+                <Row className='py-2'>
+                  <Col xs={3}>
+                    <Row>
+                      <Col>
+                        <Image src={pengguna.avatar} className='w-25' fluid />
+                        <span>
+                          <Link
+                            to={`/pengguna/${pengguna._id}`}
+                            className='text-blue link-blue font-weight-bold pl-3'
+                          >
+                            {pengguna.nama}
+                          </Link>
+                        </span>
+                      </Col>
+                    </Row>
                   </Col>
-                  <Col xs={2}>
-                    <Button
-                      type='submit'
-                      className='text-white font-weight-bold border-0 comment-button'
-                    >
-                      Kirim
-                    </Button>
+                  <Col xs={7} className='text=left'>
+                    <h4 className='text-blue'>{content.judul}</h4>
                   </Col>
                 </Row>
-              </Form>
-              <h4 className='mt-4'>{content.komentar.length} Jawaban:</h4>
-              {content.komentar.map((comment) => (
-                <Card className='p-3 my-3'>
-                  <Row className='mb-3'>
-                    <Col>
-                      <Image src={comment.avatar} style={{ width: 30 }} />
-                      <span>
-                        <Link
-                          to={`/pengguna/${comment.pengguna}`}
-                          className='text-blue link-blue font-weight-bold pl-3'
-                        >
-                          {comment.nama}
-                        </Link>
-                      </span>
+                <Row className='py-2'>
+                  <Col>
+                    <p className='text-justify font-weight-bold'>
+                      {content.postingan}
+                    </p>
+                    {content.gambar &&
+                      content.gambar.map((g) => (
+                        <a href={g} target='_blank'>
+                          <Image
+                            style={{ height: '10rem', margin: '1rem' }}
+                            src={g}
+                            fluid
+                          />
+                        </a>
+                      ))}
+                  </Col>
+                </Row>
+                <Form onSubmit={commentHandler} className='py-2'>
+                  <Row>
+                    <Col xs={10}>
+                      <Form.Control
+                        controlId='komen'
+                        value={komen}
+                        onChange={(e) => setKomen(e.target.value)}
+                        placeholder='Berikan Jawaban Anda'
+                      />
+                    </Col>
+                    <Col xs={2}>
+                      <Button
+                        type='submit'
+                        className='text-white font-weight-bold border-0 comment-button'
+                      >
+                        Kirim
+                      </Button>
                     </Col>
                   </Row>
-                  <p className='text-justify font-weight-bold'>
-                    {comment.komen}
-                  </p>
-                </Card>
-              ))}
-            </Container>
+                </Form>
+                <h4 className='mt-4'>{content.komentar.length} Jawaban:</h4>
+                {content.komentar.map((comment) => (
+                  <Card className='p-3 my-3'>
+                    <Row className='mb-3'>
+                      <Col>
+                        <Image src={comment.avatar} style={{ width: 30 }} />
+                        <span>
+                          <Link
+                            to={`/pengguna/${comment.pengguna}`}
+                            className='text-blue link-blue font-weight-bold pl-3'
+                          >
+                            {comment.nama}
+                          </Link>
+                        </span>
+                      </Col>
+                    </Row>
+                    <p className='text-justify font-weight-bold'>
+                      {comment.komen}
+                    </p>
+                  </Card>
+                ))}
+              </Container>
+            )
           )}
         </Col>
       </Row>
