@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Col, Row, Container, Form, Button, Image, Card } from 'react-bootstrap'
@@ -35,14 +35,17 @@ const PostDetail = ({ history, match }) => {
     dispatch(addComment(match.params.id, komen))
   }
 
-  const categoryHandler = (category) => {
-    dispatch(listContentCategorized(category))
-    history.push('/linimasa')
-  }
+  const categoryHandler = useCallback(
+    (category) => {
+      dispatch(listContentCategorized(category))
+      history.push('/linimasa')
+    },
+    [dispatch, history]
+  )
 
-  const logoutHandler = () => {
+  const logoutHandler = useCallback(() => {
     history.push('/')
-  }
+  }, [history])
 
   const [nav, setNav] = useState(
     <Col md={3} lg={2} className='p-0'>
@@ -65,42 +68,43 @@ const PostDetail = ({ history, match }) => {
       </Col>
     </Row>
   )
+
   const mql = window.matchMedia('(max-width: 768px)')
 
-  const mediaQueryChanged = () => {
-    setNav(() => {
-      return mql.matches ? (
-        <Container className='p-0' fluid>
-          <Header />
-        </Container>
-      ) : (
-        <Col md={3} lg={2} className='p-0'>
-          <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
-        </Col>
-      )
-    })
-    setAccount(() =>
-      mql.matches ? null : (
-        <Row className='px-5'>
-          <Col className='font-weight-bold pt-4 text-right'>
-            <Link
-              to={`/pengguna/${userInfo._id}`}
-              className='text-blue link-blue px-3'
-            >
-              {userInfo && userInfo.nama}
-            </Link>
-            <Link to='/notifikasi' className='text-blue link-blue px-3'>
-              Notifikasi
-            </Link>
-          </Col>
-        </Row>
-      )
-    )
-  }
-
   useEffect(() => {
+    const mediaQueryChanged = () => {
+      setNav(() => {
+        return mql.matches ? (
+          <Container className='p-0' fluid>
+            <Header />
+          </Container>
+        ) : (
+          <Col md={3} lg={2} className='p-0'>
+            <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
+          </Col>
+        )
+      })
+      setAccount(() =>
+        mql.matches ? null : (
+          <Row className='px-5'>
+            <Col className='font-weight-bold pt-4 text-right'>
+              <Link
+                to={`/pengguna/${userInfo._id}`}
+                className='text-blue link-blue px-3'
+              >
+                {userInfo && userInfo.nama}
+              </Link>
+              <Link to='/notifikasi' className='text-blue link-blue px-3'>
+                Notifikasi
+              </Link>
+            </Col>
+          </Row>
+        )
+      )
+    }
+
     mql.addEventListener('change', mediaQueryChanged)
-  }, [mql, mediaQueryChanged])
+  }, [mql, categoryHandler, logoutHandler, userInfo])
 
   return (
     <Container fluid>
@@ -146,8 +150,13 @@ const PostDetail = ({ history, match }) => {
                       {content.postingan}
                     </p>
                     {content.gambar &&
-                      content.gambar.map((g) => (
-                        <a href={g} target='_blank' rel='noreferrer'>
+                      content.gambar.map((g, index) => (
+                        <a
+                          href={g}
+                          target='_blank'
+                          rel='noreferrer'
+                          key={index + 1}
+                        >
                           <Image
                             style={{ height: '10rem', margin: '1rem' }}
                             src={g}
@@ -161,7 +170,6 @@ const PostDetail = ({ history, match }) => {
                   <Row>
                     <Col xs={10}>
                       <Form.Control
-                        controlId='komen'
                         value={komen}
                         onChange={(e) => setKomen(e.target.value)}
                         placeholder='Berikan Jawaban Anda'
@@ -179,7 +187,7 @@ const PostDetail = ({ history, match }) => {
                 </Form>
                 <h4 className='mt-4'>{content.komentar.length} Jawaban:</h4>
                 {content.komentar.map((comment) => (
-                  <Card className='p-3 my-3'>
+                  <Card className='p-3 my-3 border-kuisioner' key={comment._id}>
                     <Row className='mb-3'>
                       <Col>
                         <Image src={comment.avatar} style={{ width: 30 }} />

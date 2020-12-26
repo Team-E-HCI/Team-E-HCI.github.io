@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Card, Container, Col, Row } from 'react-bootstrap'
@@ -19,14 +19,17 @@ const Notifications = ({ history }) => {
     }
   }, [history, userInfo])
 
-  const categoryHandler = (category) => {
-    dispatch(listContentCategorized(category))
-    history.push('/linimasa')
-  }
+  const categoryHandler = useCallback(
+    (category) => {
+      dispatch(listContentCategorized(category))
+      history.push('/linimasa')
+    },
+    [dispatch, history]
+  )
 
-  const logoutHandler = () => {
+  const logoutHandler = useCallback(() => {
     history.push('/')
-  }
+  }, [history])
 
   const [nav, setNav] = useState(
     <Col md={3} lg={2} className='p-0'>
@@ -49,42 +52,43 @@ const Notifications = ({ history }) => {
       </Col>
     </Row>
   )
+
   const mql = window.matchMedia('(max-width: 768px)')
 
-  const mediaQueryChanged = () => {
-    setNav(() => {
-      return mql.matches ? (
-        <Container className='p-0' fluid>
-          <Header />
-        </Container>
-      ) : (
-        <Col md={3} lg={2} className='p-0'>
-          <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
-        </Col>
-      )
-    })
-    setAccount(() =>
-      mql.matches ? null : (
-        <Row className='px-5'>
-          <Col className='font-weight-bold pt-4 text-right'>
-            <Link
-              to={`/pengguna/${userInfo._id}`}
-              className='text-blue link-blue px-3'
-            >
-              {userInfo && userInfo.nama}
-            </Link>
-            <Link to='/notifikasi' className='text-blue link-blue px-3'>
-              Notifikasi
-            </Link>
-          </Col>
-        </Row>
-      )
-    )
-  }
-
   useEffect(() => {
+    const mediaQueryChanged = () => {
+      setNav(() => {
+        return mql.matches ? (
+          <Container className='p-0' fluid>
+            <Header />
+          </Container>
+        ) : (
+          <Col md={3} lg={2} className='p-0'>
+            <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
+          </Col>
+        )
+      })
+      setAccount(() =>
+        mql.matches ? null : (
+          <Row className='px-5'>
+            <Col className='font-weight-bold pt-4 text-right'>
+              <Link
+                to={`/pengguna/${userInfo._id}`}
+                className='text-blue link-blue px-3'
+              >
+                {userInfo && userInfo.nama}
+              </Link>
+              <Link to='/notifikasi' className='text-blue link-blue px-3'>
+                Notifikasi
+              </Link>
+            </Col>
+          </Row>
+        )
+      )
+    }
+
     mql.addEventListener('change', mediaQueryChanged)
-  }, [mql, mediaQueryChanged])
+  }, [mql, categoryHandler, logoutHandler, userInfo])
 
   const userNotifications = useSelector((state) => state.userNotifications)
   const { notifications, loading, error } = userNotifications
@@ -107,9 +111,12 @@ const Notifications = ({ history }) => {
           ) : (
             notifications.notifications &&
             notifications.notifications.map((n) => (
-              <Card className='p-4 my-3'>
-                <Link to={n.url.split('/api')[1]}>
-                  <p className='text-blue font-weight-bold'>{n.pesan}</p>
+              <Card className='p-4 my-3' key={n._id}>
+                <Link
+                  className='text-blue font-weight-bold link-blue'
+                  to={n.url.split('/api')[1]}
+                >
+                  <p>{n.pesan}</p>
                 </Link>
               </Card>
             ))

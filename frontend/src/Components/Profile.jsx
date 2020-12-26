@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../App.css'
@@ -47,14 +47,17 @@ const Profile = ({ history, match }) => {
     history.go(0)
   }
 
-  const categoryHandler = (category) => {
-    dispatch(listContentCategorized(category))
-    history.push('/linimasa')
-  }
+  const categoryHandler = useCallback(
+    (category) => {
+      dispatch(listContentCategorized(category))
+      history.push('/linimasa')
+    },
+    [dispatch, history]
+  )
 
-  const logoutHandler = () => {
+  const logoutHandler = useCallback(() => {
     history.push('/')
-  }
+  }, [history])
 
   const [nav, setNav] = useState(
     <Col md={3} lg={2} className='p-0'>
@@ -80,40 +83,40 @@ const Profile = ({ history, match }) => {
 
   const mql = window.matchMedia('(max-width: 768px)')
 
-  const mediaQueryChanged = () => {
-    setNav(() => {
-      return mql.matches ? (
-        <Container className='p-0' fluid>
-          <Header />
-        </Container>
-      ) : (
-        <Col md={3} lg={2} className='p-0'>
-          <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
-        </Col>
-      )
-    })
-    setAccount(() =>
-      mql.matches ? null : (
-        <Row className='px-5'>
-          <Col className='font-weight-bold pt-4 text-right'>
-            <Link
-              to={`/pengguna/${userInfo._id}`}
-              className='text-blue link-blue px-3'
-            >
-              {userInfo && userInfo.nama}
-            </Link>
-            <Link to='/notifikasi' className='text-blue link-blue px-3'>
-              Notifikasi
-            </Link>
-          </Col>
-        </Row>
-      )
-    )
-  }
-
   useEffect(() => {
+    const mediaQueryChanged = () => {
+      setNav(() => {
+        return mql.matches ? (
+          <Container className='p-0' fluid>
+            <Header />
+          </Container>
+        ) : (
+          <Col md={3} lg={2} className='p-0'>
+            <Sidebar onLogout={logoutHandler} onCategory={categoryHandler} />
+          </Col>
+        )
+      })
+      setAccount(() =>
+        mql.matches ? null : (
+          <Row className='px-5'>
+            <Col className='font-weight-bold pt-4 text-right'>
+              <Link
+                to={`/pengguna/${userInfo._id}`}
+                className='text-blue link-blue px-3'
+              >
+                {userInfo && userInfo.nama}
+              </Link>
+              <Link to='/notifikasi' className='text-blue link-blue px-3'>
+                Notifikasi
+              </Link>
+            </Col>
+          </Row>
+        )
+      )
+    }
+
     mql.addEventListener('change', mediaQueryChanged)
-  }, [mql, mediaQueryChanged])
+  }, [mql, categoryHandler, logoutHandler, userInfo])
 
   return (
     <>
@@ -129,7 +132,7 @@ const Profile = ({ history, match }) => {
             ) : (
               user && (
                 <div className='row ml-1 mr-1 mt-3'>
-                  <div className='col-sm-4 my-auto mx-auto'>
+                  <div className='col-sm-4 my-auto mx-auto col-lg-4'>
                     <Image
                       src={userInfo.avatar}
                       className='mx-auto'
@@ -138,12 +141,12 @@ const Profile = ({ history, match }) => {
                       roundedCircle
                     />
                   </div>
-                  <div className='col-sm-5'>
+                  <div className='col-sm-5 col-lg-8'>
                     <div style={{ display: 'flex' }}>
                       <h1 className='profile-header mt-3'>Profil</h1>
                       {userInfo._id === match.params.id && (
                         <LinkContainer
-                          className='mt-4 ml-auto edit-profile'
+                          className='mt-4 mx-auto edit-profile'
                           to={`/update-pengguna/${user._id}`}
                           style={{ cursor: 'pointer' }}
                         >
@@ -154,12 +157,12 @@ const Profile = ({ history, match }) => {
                     <Form.Group
                       as={Row}
                       className='profile-content'
-                      controlId='formPlaintextName'
+                      controlId='namaLengkap'
                     >
-                      <Form.Label column className='col-sm-4'>
+                      <Form.Label column className='col-sm-3'>
                         Nama Lengkap
                       </Form.Label>
-                      <Col className='col-sm-6'>
+                      <Col className='col-sm-9 px-0'>
                         <Form.Control
                           plaintext
                           readOnly
@@ -171,12 +174,12 @@ const Profile = ({ history, match }) => {
                     <Form.Group
                       as={Row}
                       className='profile-content'
-                      controlId='formPlaintextName'
+                      controlId='email'
                     >
-                      <Form.Label column className='col-sm-4'>
+                      <Form.Label column className='col-sm-3'>
                         Email
                       </Form.Label>
-                      <Col className='col-sm-6'>
+                      <Col className='col-sm-9 px-0'>
                         <Form.Control
                           plaintext
                           readOnly
@@ -188,12 +191,12 @@ const Profile = ({ history, match }) => {
                     <Form.Group
                       as={Row}
                       className='profile-content'
-                      controlId='formPlaintextName'
+                      controlId='github'
                     >
-                      <Form.Label column className='col-sm-4'>
+                      <Form.Label column className='col-sm-3'>
                         Github
                       </Form.Label>
-                      <Col className='col-sm-6'>
+                      <Col className='col-sm-9 px-0'>
                         <Form.Control
                           plaintext
                           readOnly
@@ -205,12 +208,12 @@ const Profile = ({ history, match }) => {
                     <Form.Group
                       as={Row}
                       className='profile-content'
-                      controlId='formPlaintextName'
+                      controlId='twitter'
                     >
-                      <Form.Label column className='col-sm-4'>
+                      <Form.Label column className='col-sm-3'>
                         Twitter
                       </Form.Label>
-                      <Col className='col-sm-6'>
+                      <Col className='col-sm-9 px-0'>
                         <Form.Control
                           plaintext
                           readOnly
@@ -219,13 +222,13 @@ const Profile = ({ history, match }) => {
                       </Col>
                     </Form.Group>
                   </div>
-                  <div className='col-sm-3'></div>
                   <div className='col-sm-12'>
                     <h1 className='profile-header mt-5'>Riwayat Pertanyaan</h1>
                     <ListGroup className='mt-5 mb-5'>
                       {user.konten &&
                         user.konten.map((k) => (
                           <div
+                            key={k._id}
                             className='question-profile'
                             style={{ display: 'flex' }}
                           >
@@ -233,7 +236,12 @@ const Profile = ({ history, match }) => {
                               variant='primary'
                               className='mt-2 w-100 mr-3'
                             >
-                              <Link to={`/konten/${k._id}`}>{k.judul}</Link>
+                              <Link
+                                className='font-weight-bold text-decoration-none'
+                                to={`/konten/${k._id}`}
+                              >
+                                {k.judul}
+                              </Link>
                             </ListGroup.Item>
                             {userInfo._id === match.params.id && (
                               <Button

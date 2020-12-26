@@ -246,8 +246,8 @@
 }
 
 .border-kuisioner {
-  border-radius: 10px;
-  border: 2px solid #7dc4f5;
+  border-radius: 10px !important;
+  border: 2px solid #7dc4f5 !important;
 }
 
 .head-kuisioner {
@@ -299,7 +299,8 @@
 .head-faq {
   font-size: 18px;
   font-weight: bold;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .text-faq {
