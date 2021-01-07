@@ -16,3 +16,7 @@ Project yang akan kami kembangkan adalah sebuah website dengan nama InfoTech. We
 
 ## 2nd Phase Conference Video
 [Konferensi dengan responden](https://www.youtube.com/watch?v=Vst72E1l3Ug)
+
+## Site Link and Final Report
+[Website Link](https://infotechappsite.herokuapp.com/)
+[Report](report/Final_Report.pdf)
